@@ -125,7 +125,7 @@ $(document).ready(function () {
     }
 
     // выбор файла
-    $('.clip-val').on('change', function () {
+    $('body').on('change', '.clip-val', function () {
         var val = $(this).val().replace(/.*\\/, "");
         $('.clip-file').text(val);
     });
@@ -422,3 +422,324 @@ $(document).ready(function () {
         $('.reviews__next').trigger('click');
     }, 1000);
 });
+
+$(window).on('load resize scroll', function() {
+    var windowScroll = $(window).scrollTop();
+    var windowWidth = $(window).width();
+    $('body').append('<div id="body-test-height" style="position:fixed; left:0; top:0; right:0; bottom:0; z-index:-1"></div>');
+    var windowHeight = $('#body-test-height').height();
+    $('#body-test-height').remove();
+    var headerHeight = 80;
+    if (windowWidth < 768) {
+        headerHeight = 70;
+    }
+
+    if (windowScroll > headerHeight) {
+        $('html').addClass('header-fixed');
+    } else {
+        $('html').removeClass('header-fixed');
+    }
+
+    if ($('.up-link').length == 1) {
+        if (windowScroll > windowHeight) {
+            $('.up-link').addClass('visible');
+        } else {
+            $('.up-link').removeClass('visible');
+        }
+
+        if (windowScroll + windowHeight > $('.footer').offset().top) {
+            $('.up-link').css({'margin-bottom': (windowScroll + windowHeight) - $('.footer').offset().top});
+        } else {
+            $('.up-link').css({'margin-bottom': 0});
+        }
+    }
+});
+
+$(document).ready(function() {
+    $('body').on('click', '.window-link', function(e) {
+        windowOpen($(this).attr('href'));
+        e.preventDefault();
+    });
+
+    $('body').on('keyup', function(e) {
+        if (e.keyCode == 27) {
+            windowClose();
+        }
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).hasClass('window')) {
+            windowClose();
+        }
+    });
+
+    $('body').on('click', '.window-close, .window-close-btn', function(e) {
+        windowClose();
+        e.preventDefault();
+    });
+
+    $('.up-link').click(function(e) {
+        $('html, body').animate({'scrollTop': 0});
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.form-files-list-item-remove', function(e) {
+        var curLink = $(this);
+        var curFiles = curLink.parents().filter('.form-files');
+        $.ajax({
+            type: 'GET',
+            url: curLink.attr('href'),
+            dataType: 'json',
+            cache: false
+        }).done(function(data) {
+            curLink.parent().remove();
+            if (curFiles.find('.form-files-list-item-progress, .form-files-list-item').length == 0) {
+                curFiles.removeClass('full');
+            }
+        });
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.form-files-list-item-cancel', function(e) {
+        var curLink = $(this);
+        var curFile = curLink.parents().filter('.form-files');
+        curLink.parent().remove();
+        if (curFiles.find('.form-files-list-item-progress, .form-files-list-item').length == 0) {
+            curFiles.removeClass('full');
+        }
+        e.preventDefault();
+    });
+});
+
+function windowOpen(linkWindow, dataWindow) {
+    if ($('.window').length == 0) {
+        var curPadding = $('.wrapper').width();
+        var curWidth = $(window).width();
+        var curScroll = $(window).scrollTop();
+        $('html').addClass('window-open');
+        curPadding = $('.wrapper').width() - curPadding;
+        $('body').css({'margin-right': curPadding + 'px'});
+
+        $('body').append('<div class="window"><div class="window-loading"></div></div>')
+
+        $('.wrapper').css({'top': -curScroll});
+        $('.wrapper').data('curScroll', curScroll);
+    } else {
+        $('.window').append('<div class="window-loading"></div>')
+        $('.window-container').addClass('window-container-preload');
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: linkWindow,
+        processData: false,
+        contentType: false,
+        dataType: 'html',
+        data: dataWindow,
+        cache: false
+    }).done(function(html) {
+        if ($('.window-container').length == 0) {
+            $('.window').html('<div class="window-container window-container-preload">' + html + '<a href="#" class="window-close"></a></div>');
+        } else {
+            $('.window-container').html(html + '<a href="#" class="window-close"></a>');
+            $('.window .window-loading').remove();
+        }
+
+        $('.window form').each(function() {
+            initForm($(this));
+        });
+
+        window.setTimeout(function() {
+            $('.window-container-preload').removeClass('window-container-preload');
+        }, 100);
+
+    });
+}
+
+function windowClose() {
+    if ($('.window').length > 0) {
+        $('.window').remove();
+        $('html').removeClass('window-open');
+        $('body').css({'margin-right': 0});
+        $('.wrapper').css({'top': 0});
+        $(window).scrollTop($('.wrapper').data('curScroll'));
+    }
+}
+
+function initForm(curForm) {
+    curForm.find('.form-files').each(function() {
+        var curFiles = $(this);
+        var curInput = curFiles.find('.form-files-input input');
+
+        var uploadURL = curInput.attr('data-uploadurl');
+        var uploadFiles = curInput.attr('data-uploadfiles');
+        var removeURL = curInput.attr('data-removeurl');
+        curInput.fileupload({
+            url: uploadURL,
+            dataType: 'json',
+            replaceFileInput: false,
+            add: function(e, data) {
+                curFiles.find('.form-files-list').html('<div class="form-files-list-item-progress"><span class="form-files-list-item-cancel"></span></div>');
+                data.submit();
+                curFiles.addClass('full');
+            },
+            done: function (e, data) {
+                curFiles.find('.form-files-list-item-progress').eq(0).remove();
+                if (data.result.status == 'success') {
+                    curFiles.find('.form-files-list').html('<div class="form-files-list-item"><div class="form-files-list-item-name">' + data.result.path + '</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"></a></div>');
+                } else {
+                    curFiles.find('.form-files-list').html('<div class="form-files-list-item error"><div class="form-files-list-item-name">' + data.result.path + '<span>' + data.result.text + '</span></div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"></a></div>');
+                }
+                curFiles.addClass('full');
+            }
+        });
+    });
+    curForm.validate({
+        ignore: '',
+        submitHandler: function(form) {
+            var curForm = $(form);
+            if (curForm.hasClass('ajax-form')) {
+                if (curForm.hasClass('recaptcha-form')) {
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('6LdHSvgcAAAAAHfkqTliNRLNbN8n4oSa0UJfMCU3', {action: 'submit'}).then(function(token) {
+                            $.ajax({
+                                type: 'POST',
+                                url: curForm.attr('data-captchaurl'),
+                                dataType: 'json',
+                                data: 'recaptcha_response=' + token,
+                                cache: false
+                            }).fail(function(jqXHR, textStatus, errorThrown) {
+                                alert('Service down' + textStatus);
+                                curForm.removeClass('loading');
+                            }).done(function(data) {
+                                if (data.status) {
+                                    curForm.addClass('loading');
+                                    var formData = new FormData(form);
+
+                                    if (curForm.find('[type=file]').length != 0) {
+                                        var file = curForm.find('[type=file]')[0].files[0];
+                                        formData.append('file', file);
+                                    }
+
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: curForm.attr('action'),
+                                        processData: false,
+                                        contentType: false,
+                                        dataType: 'json',
+                                        data: formData,
+                                        cache: false
+                                    }).done(function(data) {
+                                        if (data.status) {
+                                            curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                                        } else {
+                                            curForm.prepend('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                                        }
+                                        curForm.removeClass('loading');
+                                    });
+                                } else {
+                                    alert('Fail Google reCAPTCHA v3.');
+                                    curForm.removeClass('loading');
+                                }
+                            });
+                        });
+                    });
+                } else {
+                    curForm.addClass('loading');
+                    var formData = new FormData(form);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: curForm.attr('action'),
+                        processData: false,
+                        contentType: false,
+                        dataType: 'json',
+                        data: formData,
+                        cache: false
+                    }).done(function(data) {
+                        curForm.find('.message').remove();
+                        if (data.status) {
+                            curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                        } else {
+                            curForm.prepend('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                        }
+                        curForm.removeClass('loading');
+                    });
+                }
+            } else if (curForm.hasClass('window-form')) {
+                if (curForm.hasClass('recaptcha-form')) {
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('6LdHSvgcAAAAAHfkqTliNRLNbN8n4oSa0UJfMCU3', {action: 'submit'}).then(function(token) {
+                            $.ajax({
+                                type: 'POST',
+                                url: curForm.attr('data-captchaurl'),
+                                dataType: 'json',
+                                data: 'recaptcha_response=' + token,
+                                cache: false
+                            }).fail(function(jqXHR, textStatus, errorThrown) {
+                                alert('Service down.' + textStatus);
+                                curForm.removeClass('loading');
+                            }).done(function(data) {
+                                if (data.status) {
+                                    curForm.addClass('loading');
+                                    var formData = new FormData(form);
+
+                                    if (curForm.find('[type=file]').length != 0) {
+                                        var file = curForm.find('[type=file]')[0].files[0];
+                                        formData.append('file', file);
+                                    }
+
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: curForm.attr('action'),
+                                        processData: false,
+                                        contentType: false,
+                                        dataType: 'json',
+                                        data: formData,
+                                        cache: false
+                                    }).done(function(data) {
+                                        if (data.status) {
+                                            curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                                        } else {
+                                            curForm.prepend('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                                        }
+                                    });
+                                    curForm.removeClass('loading');
+                                } else {
+                                    alert('Fail Google reCAPTCHA v3.');
+                                    curForm.removeClass('loading');
+                                }
+                            });
+                        });
+                    });
+                } else {
+                    var formData = new FormData(form);
+
+                    windowOpen(curForm.attr('action'), formData);
+                }
+            } else if (curForm.hasClass('recaptcha-form')) {
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6LdHSvgcAAAAAHfkqTliNRLNbN8n4oSa0UJfMCU3', {action: 'submit'}).then(function(token) {
+                        $.ajax({
+                            type: 'POST',
+                            url: curForm.attr('data-captchaurl'),
+                            dataType: 'json',
+                            data: 'recaptcha_response=' + token,
+                            cache: false
+                        }).fail(function(jqXHR, textStatus, errorThrown) {
+                            alert('Service down.' + textStatus);
+                        }).done(function(data) {
+                            if (data.status) {
+                                form.submit();
+                            } else {
+                                alert('Fail Google reCAPTCHA v3.');
+                            }
+                        });
+                    });
+                });
+            } else {
+                form.submit();
+            }
+        }
+    });
+}

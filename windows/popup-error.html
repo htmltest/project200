@@ -1,0 +1,59 @@
+<div class="window-general">
+    <div class="window-title">Submit a tesimonial</div>
+    <div class="window-content">
+        <form action="ajax/error.html" method="post" data-captchaurl="ajax/captcha.php" class="apply ajax-form recaptcha-form">
+            <div class="apply__grid">
+              <div class="field__wrap">
+                <div class="field__title">First Name<span>*</span></div>
+                <input type="text" name="firstname" class="field required" placeholder="Maria">
+              </div>
+              <div class="field__wrap">
+                <div class="field__title">Last Name<span>*</span></div>
+                <input type="text" name="lastname" class="field required" placeholder="Ivanova">
+              </div>
+              <div class="field__wrap">
+                <div class="field__title">Email<span>*</span></div>
+                <input type="text" name="email" class="field required email">
+              </div>
+              <div class="field__wrap">
+                <div class="field__title">Phone<span>*</span></div>
+                <input type="text" name="phone" class="field required">
+              </div>
+              <div class="field__wrap">
+                <div class="field__title">Country<span>*</span></div>
+                <select class="select required">
+                  <option value="1">Russian Federation</option>
+                  <option value="2">Russian Federation2</option>
+                  <option value="3">Russian Federation3</option>
+                  <option value="4">Russian Federation4</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field__title">A scan of your education certificate and the academic transcript<span>*</span></div>
+            <div class="form-files">
+                <div class="form-files-input"><input type="file" class="required" name="scans1[]" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn --border">Upload a PDF file</span></div>
+                <div class="form-files-list"></div>
+            </div>
+
+            <div class="field__title">A scan of your international passport</div>
+            <div class="form-files">
+                <div class="form-files-input"><input type="file" name="scans2[]" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn --border">Upload a PDF file</span></div>
+                <div class="form-files-list"></div>
+            </div>
+
+            <div class="checkbox__wrap">
+              <input type="checkbox" id="c3" name="agree" class="required">
+              <label for="c3" class="checkbox">By checking this box, I agree to the processing of personal data and receiving emails, text messages and telephone calls from INRTU Admission office regarding furthering my education.</label>
+            </div>
+
+            <div class="captcha-notice">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>
+            <script src="https://www.google.com/recaptcha/api.js?render=6LdHSvgcAAAAAHfkqTliNRLNbN8n4oSa0UJfMCU3"></script>
+
+            <div class="window-btns">
+                <button class="btn --border window-close-btn">BACK</button>
+                <button type="submit" class="btn --orange">APPLY</button>
+            </div>
+        </form>
+    </div>
+</div>
