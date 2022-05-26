@@ -10315,6 +10315,13 @@ a.ui-button:active {
 .window-btns .btn+.btn {margin-left:20px}
 .window-btns .btn.--border {line-height:47px}
 .window-content .window-btns {margin:60px -30px -60px -30px}
+.window-preform-text {margin:0 0 30px 0; font-size:16px; line-height:24px}
+.window-preform-text p {margin:0; padding:0}
+.window-preform-text p+p {margin:24px 0 0 0}
+.window-preform-text a {text-decoration:underline}
+.window-preform-text a:hover {text-decoration:none}
+.form-files-notice {margin:0 0 30px 0; font-size:16px; line-height:24px}
+.field__title em {font-style:normal; color:#dfdfdf}
 
 @media only screen and (max-width:767px) {
     .window-content {padding:20px 20px 40px 20px}
@@ -10352,35 +10359,45 @@ a.ui-button:active {
 
 .message+.apply__grid {margin-top:30px}
 
-.form-files {margin:10px 0 30px 0}
+.form-files {margin:10px 0 30px 0; position:relative}
 .form-files::after {content:""; display:block; clear:both}
 
 .form-files-input {float:left; position:relative; overflow:hidden; cursor:pointer}
 .form-files-input input {height:200px; z-index:1; position:absolute; top:0; right:0; opacity:0; cursor:pointer; font-size:200px; background:url(../images/pic/blank.gif); -webkit-appearance:none}
-.form-files-input span {font-size:14px; line-height:43px; height:45px; color:#000; font-family:"Golos_Regular", "Golos-Regular", "Arial", sans-serif; padding:0 26px; text-transform:none; letter-spacing:0}
-.form-files-input:hover span {background:#000; color:#fff}
-.form-files-input input.error+label.error+span {border-color:#f00; margin-bottom:19px}
-.form-files-input label.error {position:absolute; right:0; bottom:0}
+.form-files-input span {font-size:14px; line-height:43px; height:45px; font-family:"Golos_Regular", "Golos-Regular", "Arial", sans-serif; padding:0 26px; text-transform:none; letter-spacing:0}
+.form-files label.error {float:left; clear:left; text-align:left}
 
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:1023px) {
     .form-files-input {float:none}
+    .form-files-input span {display:block; padding:0; text-align:center}
+    .form-files label.error {float:none; text-align:right}
 }
 
-.form-files-list {float:left; width:calc(100% - 220px); margin:0 0 -18px 35px; font-size:0; line-height:0; letter-spacing:-1px}
-.form-files-list-item-progress {display:inline-block; vertical-align:top; width:38px; height:44px; background:url(../images/pic/loading.svg) no-repeat center bottom; position:relative}
-.form-files-list-item {display:inline-block; vertical-align:top; max-width:100%; padding:8px 0 0 0; font-size:16px; line-height:24px; color:#6c6c6c; font-family:"Golos_Regular", "Golos-Regular", "Arial", sans-serif; position:relative; letter-spacing:0}
-.form-files-list-item.error {color:#f00}
-.form-files-list-item span {display:block; font-size:12px; line-height:18px; color:#000}
-.form-files-list-item::after {content:""; display:block; width:24px; height:24px; position:absolute; right:-29px; top:8px; background:url(../images/ico/form-file-success.svg) no-repeat; background-size:100%}
-.form-files-list-item.error::after {background:url(../images/ico/form-file-error.svg) no-repeat}
+.form-files-list {float:left; clear:left; margin:10px 0 0 -10px; font-size:0; line-height:0; letter-spacing:-1px}
+.form-files.full .form-files-list {display:block}
+.form-files-list-item-progress {display:inline-block; vertical-align:top; width:136px; height:150px; background:#f0f0f0 url(../images/pic/loading.svg) no-repeat center; border-radius:5px; margin:10px 0 0 10px; position:relative}
+.form-files-list-item {display:inline-block; vertical-align:top; width:136px; height:150px; padding:33px 0 0 0; background:#f0f0f0; border-radius:5px; margin:10px 0 0 10px; position:relative; letter-spacing:0; overflow:hidden}
 .form-files-list-item-remove,
-.form-files-list-item-cancel {display:block; position:absolute; left:-20px; top:17px; width:13px; height:12px; cursor:pointer; background:url(../images/ico/form-file-remove.svg); transition:opacity 0.2s}
-.form-files-list-item-remove:hover,
-.form-files-list-item-cancel:hover {opacity:0.8}
-.form-files-list-item-name {white-space:nowrap; text-overflow:ellipsis; position:relative; padding:5px 0; overflow:hidden}
+.form-files-list-item-cancel {display:block; position:absolute; right:5px; top:5px; width:25px; height:24px; cursor:pointer; border-radius:50%; background:url(../images/ico/file-remove.svg) no-repeat}
+.form-files-list-item-icon {width:37px; height:47px; position:relative; margin:0 auto; background:url(../images/ico/file-icon.svg) no-repeat}
+.form-files-list-item.error .form-files-list-item-icon {width:33px; height:28px; margin:0 auto; background:url(../images/ico/form-file-error.svg) no-repeat}
+.form-files-list-item-name {margin:12px 5px 0 5px; font-size:12px; line-height:18px; font-weight:normal; text-align:center; color:#6c6c6c; height:36px; position:relative; overflow:hidden}
+.form-files-list-item.error .form-files-list-item-name {color:#f00}
+.form-files-list-item-error {margin:5px 0 0 0; font-size:12px; line-height:18px; font-weight:normal; text-align:center; color:#ff0000}
+.form-files-list-item-size {margin:0; font-size:12px; line-height:18px; font-weight:normal; text-align:center; color:#b4b4b4}
+.form-files-list-item.error .form-files-list-item-size {color:#f00}
 
-@media only screen and (max-width:767px) {
-    .form-files-list {float:none; width:auto; margin:0 0 0 20px}
+@media only screen and (max-width:1023px) {
+    .form-files-list {float:none; margin:10px 0 0 0}
+    .form-files-list-item-progress {display:block; width:auto; height:68px; margin:10px 0 0 0}
+    .form-files-list-item {display:block; width:auto; height:68px; padding:17px 44px 0 52px; margin:10px 0 0 0}
+    .form-files-list-item-icon {width:22px; height:28px; position:absolute; left:20px; top:20px; margin:0; background-size:100%}
+    .form-files-list-item.error .form-files-list-item-icon {width:23px; height:20px; left:15px; top:25px; margin:0; background-size:100%}
+    .form-files-list-item-name {margin:0; font-size:14px; line-height:21px; height:21px; position:relative; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; text-align:left}
+    .form-files-list-item-error {margin:0; text-align:left}
+    .form-files-list-item-size {font-size:14px; line-height:21px; text-align:left}
+    .form-files-list-item-remove,
+    .form-files-list-item-cancel {right:10px; top:50%; margin-top:-12px}
 }
 
 .educational__banner-inner .btn.--border {color:#fff; border-color:#fff; line-height:52px; border-width:2px; padding:0 25px; margin:0 0 0 20px}
@@ -10394,18 +10411,19 @@ a.ui-button:active {
     .educational__banner-inner .btn.--link {margin:10px 0 0 0; line-height:28px; height:28px}
 }
 
+.educational-bottom-prelinks {margin:20px 0 30px 0}
+.educational-bottom-prelinks .btn.--link {color:#2ca1c7; padding:0; background:transparent; margin:0; line-height:28px; height:auto; text-decoration:underline; text-transform:none; letter-spacing:0}
+.educational-bottom-prelinks .btn.--link:hover {text-decoration:none}
+
 .educational-bottom-links {border-top:1px solid #dbdbdb; border-bottom:1px solid #dbdbdb; margin:20px 0; padding:30px 0}
 .educational-bottom-links .btn.--border {line-height:52px; border-width:2px; padding:0 25px; margin:0 0 0 20px}
 .educational-bottom-links .btn.--border:hover {background:#f7f7f7}
-.educational-bottom-links .btn.--link {color:#2ca1c7; padding:0; background:transparent; margin:0 0 0 20px; text-decoration:underline; text-transform:none; letter-spacing:0}
-.educational-bottom-links .btn.--link:hover {text-decoration:none}
 
 @media only screen and (max-width:1023px) {
     .educational-bottom-links {padding:20px 0}
     .educational-bottom-links .btn {display:block; margin:10px 0 0 0}
     .educational-bottom-links .btn:first-child {margin:0}
     .educational-bottom-links .btn.--border {margin:10px 0 0 0; line-height:46px}
-    .educational-bottom-links .btn.--link {margin:10px 0 0 0; line-height:28px; height:28px}
 }
 
 form.loading {position:relative}
@@ -10423,3 +10441,7 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
 
 .grecaptcha-badge {visibility:hidden}
 .captcha-notice {margin:20px 0; font-size:12px; line-height:14px}
+.captcha-notice a {text-decoration:underline}
+
+.field__wrap {position:relative}
+.field__wrap select+label.error {position:absolute; right:0; top:100%}

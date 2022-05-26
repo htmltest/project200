@@ -496,6 +496,9 @@ $(document).ready(function() {
             if (curFiles.find('.form-files-list-item-progress, .form-files-list-item').length == 0) {
                 curFiles.removeClass('full');
             }
+            if (curFiles.find('.form-files-list-item').length == 0) {
+                curFiles.find('.form-files-hidden').val('');
+            }
         });
         e.preventDefault();
     });
@@ -506,6 +509,9 @@ $(document).ready(function() {
         curLink.parent().remove();
         if (curFiles.find('.form-files-list-item-progress, .form-files-list-item').length == 0) {
             curFiles.removeClass('full');
+        }
+        if (curFiles.find('.form-files-list-item').length == 0) {
+            curFiles.find('.form-files-hidden').val('');
         }
         e.preventDefault();
     });
@@ -567,6 +573,23 @@ function windowClose() {
 }
 
 function initForm(curForm) {
+    curForm.find('select').each(function() {
+        var curSelect = $(this);
+        var options = {
+            minimumResultsForSearch: 20
+        }
+
+        if ($(window).width() > 1119) {
+            options['dropdownAutoWidth'] = true;
+        }
+
+        if (curSelect.parents().filter('.window').length == 1) {
+            options['dropdownParent'] = $('.window-content');
+        }
+
+        curSelect.select2(options);
+    });
+
     curForm.find('.form-files').each(function() {
         var curFiles = $(this);
         var curInput = curFiles.find('.form-files-input input');
@@ -577,23 +600,23 @@ function initForm(curForm) {
         curInput.fileupload({
             url: uploadURL,
             dataType: 'json',
-            replaceFileInput: false,
             add: function(e, data) {
-                curFiles.find('.form-files-list').html('<div class="form-files-list-item-progress"><span class="form-files-list-item-cancel"></span></div>');
+                curFiles.find('.form-files-list').append('<div class="form-files-list-item-progress"><span class="form-files-list-item-cancel"></span></div>');
                 data.submit();
-                curFiles.addClass('full');
             },
             done: function (e, data) {
                 curFiles.find('.form-files-list-item-progress').eq(0).remove();
                 if (data.result.status == 'success') {
-                    curFiles.find('.form-files-list').html('<div class="form-files-list-item"><div class="form-files-list-item-name">' + data.result.path + '</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"></a></div>');
+                    curFiles.find('.form-files-list').append('<div class="form-files-list-item"><div class="form-files-list-item-icon"></div><div class="form-files-list-item-name">' + data.result.path + '</div><div class="form-files-list-item-size">' + Number(data.result.size).toFixed(2) + ' Мб</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"></a></div>');
+                    curFiles.find('.form-files-hidden').val('true').removeClass('error');
+                    curFiles.find('label.error').remove();
                 } else {
-                    curFiles.find('.form-files-list').html('<div class="form-files-list-item error"><div class="form-files-list-item-name">' + data.result.path + '<span>' + data.result.text + '</span></div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"></a></div>');
+                    curFiles.find('.form-files-list').append('<div class="form-files-list-item error"><div class="form-files-list-item-icon"></div><div class="form-files-list-item-error">' + data.result.text + '</div><div class="form-files-list-item-name">' + data.result.path + '</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"></a></div>');
                 }
-                curFiles.addClass('full');
             }
         });
     });
+
     curForm.validate({
         ignore: '',
         submitHandler: function(form) {

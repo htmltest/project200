@@ -1,7 +1,11 @@
 <div class="window-general">
-    <div class="window-title">Submit a tesimonial</div>
+    <div class="window-title">Ask a question</div>
     <div class="window-content">
         <form action="ajax/error.html" method="post" data-captchaurl="ajax/captcha.php" class="apply ajax-form recaptcha-form">
+            <div class="window-preform-text">
+                <p>If you have chosen the program and are ready to submit your documents for admission, please register in <a href="#">INRTU online application system</a>.</p>
+                <p>If you would like to get a consultation from the Admission office, please fill in the form below</p>
+            </div>
             <div class="apply__grid">
               <div class="field__wrap">
                 <div class="field__title">First Name<span>*</span></div>
@@ -21,7 +25,8 @@
               </div>
               <div class="field__wrap">
                 <div class="field__title">Country<span>*</span></div>
-                <select class="select required">
+                <select class="select required" data-placeholder="Select country">
+                  <option value=""></option>
                   <option value="1">Russian Federation</option>
                   <option value="2">Russian Federation2</option>
                   <option value="3">Russian Federation3</option>
@@ -30,15 +35,19 @@
               </div>
             </div>
 
-            <div class="field__title">A scan of your education certificate and the academic transcript<span>*</span></div>
+            <div class="form-files-notice">If you would like to do preliminary document recognition, please upload the following documents:</div>
+
+            <div class="field__title">A scan of your education certificate and the academic transcript <em>(png, jpg, gif)</em><span>*</span></div>
             <div class="form-files">
-                <div class="form-files-input"><input type="file" class="required" name="scans1[]" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn --border">Upload a PDF file</span></div>
+                <div class="form-files-input"><input type="file" multiple="multiple" name="scans1[]" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn --blue">Upload file</span></div>
+                <input type="hidden" name="scans1_hidden" value="" class="form-files-hidden required" />
                 <div class="form-files-list"></div>
             </div>
 
-            <div class="field__title">A scan of your international passport</div>
+            <div class="field__title">A scan of your international passport <em>(png, jpg, gif)</em><span>*</span></div>
             <div class="form-files">
-                <div class="form-files-input"><input type="file" name="scans2[]" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn --border">Upload a PDF file</span></div>
+                <div class="form-files-input"><input type="file" multiple="multiple" name="scans2[]" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn --blue">Upload file</span></div>
+                <input type="hidden" name="scans2_hidden" value="" class="form-files-hidden required" />
                 <div class="form-files-list"></div>
             </div>
 
