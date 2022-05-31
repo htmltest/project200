@@ -4010,7 +4010,7 @@ a.ui-button:active {
 
 @media only screen and (max-width: 767px) {
   .educational__banner {
-    height: auto;
+    height: 410px;
     padding: 40px 15px 20px 15px;
     margin-bottom: 25px;
   }
@@ -10244,13 +10244,28 @@ a.ui-button:active {
     .header-fixed .header__logo {width:75px; height:27px; background:url(../images/pic/logo-fixed.svg) no-repeat}
     .header-fixed .header__logo img {display:none}
     .header-fixed .header__nav {order:1}
-    .header-fixed .header__nav-item {margin-right:40px}
+    .header:not(.--index) .header__nav-item {margin-right:0}
+    .header-fixed .header__nav-item {margin-right:0}
     .header-fixed .header__nav-item:last-child {margin-right:0}
-    .header-fixed .header__nav-link {font-size:16px; line-height:19px; padding:16px 15px 16px 0}
-    .header-fixed .header__nav-item:hover .header__nav-link {color:#2984df}
-    .header-fixed .header__nav-link::before {width:10px; height:6px; margin-top:-1px; background:url(../images/ico/arrow-menu-down-blue-fixed.svg) no-repeat}
-    .header-fixed .header__nav-list {left:0; top:100%; margin-top:30px; box-shadow:0px 4px 40px rgba(123, 123, 123, 0.15); font-size:16px; line-height:19px}
+    .header:not(.--index) .header__nav-link {padding:20px 36px 20px 20px}
+    .header-fixed .header__nav-link,
+    .header-fixed .header:not(.--index) .header__nav-link {font-size:16px; line-height:19px; padding:16px 35px 16px 20px}
+    .header:not(.--index) .header__nav-link.active,
+    .header:not(.--index) .header__nav-item:hover .header__nav-link {background:#f4f4f4}
+    .header-fixed .header__nav-link.active,
+    .header-fixed .header__nav-item:hover .header__nav-link {background:#f4f4f4}
+    .header:not(.--index) .header__nav-link::before {right:20px}
+    .header-fixed .header__nav-link::before {right:20px; width:10px; height:6px; margin-top:-1px; background:url(../images/ico/arrow-menu-down-blue-fixed.svg) no-repeat}
+    .header:not(.--index) .header__nav-list,
+    .header-fixed .header__nav-list {left:0; top:100%; margin-top:30px; box-shadow:0px 4px 40px rgba(123, 123, 123, 0.15); font-size:16px; line-height:19px; padding:0}
+    .header:not(.--index) .header__nav-list::after,
     .header-fixed .header__nav-list::after {content:""; display:block; position:absolute; left:-1px; top:-31px; right:-1px; height:30px}
+    .header:not(.--index) .header__nav-list__link,
+    .header-fixed .header__nav-list__link {display:block; padding:10px 30px; margin:0; position:relative; z-index:1}
+    .header:not(.--index) .header__nav-list__link.active,
+    .header:not(.--index) .header__nav-list__link:hover,
+    .header-fixed .header__nav-list__link.active,
+    .header-fixed .header__nav-list__link:hover {color:#000; background:#f4f4f4}
     .header-fixed .header__form {display:none; order:2}
     .header-fixed .header__inner {display:block; order:2}
     .header-fixed .header__inner-search {width:19px; height:19px; background:url(../images/pic/search-icon-fixed.svg) no-repeat}
@@ -10305,6 +10320,7 @@ a.ui-button:active {
 .btn.--border {border:1px solid #000; background:transparent; color:#000}
 .btn.--orange:hover {background:#ce4905; color:#fff}
 .btn.--border:hover {background:#fff; color:#000}
+.btn.--blue:hover {background:#0c7b9f; color:#fff}
 
 .window-title {background:#ff6515; padding:24px 96px 24px 30px; color:#fff; font-weight:bold; font-size:24px; line-height:28px}
 .window-content {padding:30px 30px 60px 30px}
@@ -10316,12 +10332,14 @@ a.ui-button:active {
 .window-btns .btn.--border {line-height:47px}
 .window-content .window-btns {margin:60px -30px -60px -30px}
 .window-preform-text {margin:0 0 30px 0; font-size:16px; line-height:24px}
-.window-preform-text p {margin:0; padding:0}
+.window-preform-text p {margin:0; padding:0; font-size:inherit; line-height:1.5em}
 .window-preform-text p+p {margin:24px 0 0 0}
 .window-preform-text a {text-decoration:underline}
 .window-preform-text a:hover {text-decoration:none}
 .form-files-notice {margin:0 0 30px 0; font-size:16px; line-height:24px}
-.field__title em {font-style:normal; color:#dfdfdf}
+.field__title em {font-style:normal; color:#999}
+textarea.field {height:auto; line-height:1.5em; padding-top:15px; padding-bottom:15px}
+.field__wrap-wide {grid-column:1 / -1}
 
 @media only screen and (max-width:767px) {
     .window-content {padding:20px 20px 40px 20px}
@@ -10341,11 +10359,13 @@ a.ui-button:active {
 .message-text p+p {margin-top:10px}
 
 @media only screen and (max-width:767px) {
-    .message {padding:27px 29px 20px 29px}
+    .message {padding:30px 20px}
     .message-title {font-weight:500; font-size:18px; line-height:27px; float:none; width:auto; margin:0; padding:0 0 0 48px}
     .message-title::before {left:0; top:-5px}
-    .message-text {margin:16px 0 0 0; min-height:0; font-size:18px; line-height:27px}
+    .message-text {margin:16px 0 0 0; min-height:0; font-size:16px; line-height:24px}
     .message-text::before {display:none}
+    .window-content > form > .message:first-child {margin-top:0}
+    .window-content > form > .message:last-child {margin-bottom:0}
 }
 
 .message-success {background:#edfbec; border:1px solid #75ff83}
@@ -10366,6 +10386,7 @@ a.ui-button:active {
 .form-files-input input {height:200px; z-index:1; position:absolute; top:0; right:0; opacity:0; cursor:pointer; font-size:200px; background:url(../images/pic/blank.gif); -webkit-appearance:none}
 .form-files-input span {font-size:14px; line-height:43px; height:45px; font-family:"Golos_Regular", "Golos-Regular", "Arial", sans-serif; padding:0 26px; text-transform:none; letter-spacing:0}
 .form-files label.error {float:left; clear:left; text-align:left}
+.form-files-input:hover .btn.--blue {background:#ce4905; color:#fff}
 
 @media only screen and (max-width:1023px) {
     .form-files-input {float:none}
@@ -10379,6 +10400,8 @@ a.ui-button:active {
 .form-files-list-item {display:inline-block; vertical-align:top; width:136px; height:150px; padding:33px 0 0 0; background:#f0f0f0; border-radius:5px; margin:10px 0 0 10px; position:relative; letter-spacing:0; overflow:hidden}
 .form-files-list-item-remove,
 .form-files-list-item-cancel {display:block; position:absolute; right:5px; top:5px; width:25px; height:24px; cursor:pointer; border-radius:50%; background:url(../images/ico/file-remove.svg) no-repeat}
+.form-files-list-item-remove:hover,
+.form-files-list-item-cancel:hover {opacity:0.5}
 .form-files-list-item-icon {width:37px; height:47px; position:relative; margin:0 auto; background:url(../images/ico/file-icon.svg) no-repeat}
 .form-files-list-item.error .form-files-list-item-icon {width:33px; height:28px; margin:0 auto; background:url(../images/ico/form-file-error.svg) no-repeat}
 .form-files-list-item-name {margin:12px 5px 0 5px; font-size:12px; line-height:18px; font-weight:normal; text-align:center; color:#6c6c6c; height:36px; position:relative; overflow:hidden}
@@ -10411,9 +10434,17 @@ a.ui-button:active {
     .educational__banner-inner .btn.--link {margin:10px 0 0 0; line-height:28px; height:28px}
 }
 
-.educational-bottom-prelinks {margin:20px 0 30px 0}
-.educational-bottom-prelinks .btn.--link {color:#2ca1c7; padding:0; background:transparent; margin:0; line-height:28px; height:auto; text-decoration:underline; text-transform:none; letter-spacing:0}
+.educational-bottom-prelinks {margin:20 0 30px 0}
+.educational__item+.educational-bottom-prelinks {margin-top:-25px}
+.educational-bottom-prelinks .btn.--link {color:#2ca1c7; padding:0; background:transparent; margin:0; line-height:28px; height:auto; text-decoration:underline; text-transform:none; letter-spacing:0; font-family:"Golos_DemiMedium", "Golos-DemiMedium", "Arial", sans-serif}
 .educational-bottom-prelinks .btn.--link:hover {text-decoration:none}
+
+.educational-bottom-entrance-text {margin:24px 0 0 0}
+
+@media only screen and (max-width:1023px) {
+    .educational__item+.educational-bottom-prelinks {margin-top:-22px}
+    .educational-bottom-entrance-text {margin:15px 0 0 0; font-size:12px; line-height:22px}
+}
 
 .educational-bottom-links {border-top:1px solid #dbdbdb; border-bottom:1px solid #dbdbdb; margin:20px 0; padding:30px 0}
 .educational-bottom-links .btn.--border {line-height:52px; border-width:2px; padding:0 25px; margin:0 0 0 20px}
@@ -10429,8 +10460,10 @@ a.ui-button:active {
 form.loading {position:relative}
 form.loading::after {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(255, 255, 255, 0.3) url(../images/pic/loading.svg) no-repeat center; z-index:1}
 
-input[type="text"].field.error {border-color:#f00}
-input[type="text"].field:hover {border-color:#2ca1c7}
+input[type="text"].field.error,
+textarea.field.error {border-color:#f00}
+input[type="text"].field:hover,
+textarea.field:hover {border-color:#2ca1c7}
 select.select.error {border-color:#f00}
 select.select:hover {border-color:#2ca1c7}
 
@@ -10445,3 +10478,5 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
 
 .field__wrap {position:relative}
 .field__wrap select+label.error {position:absolute; right:0; top:100%}
+
+.checkbox {line-height:1.5em}

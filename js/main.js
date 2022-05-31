@@ -655,6 +655,9 @@ function initForm(curForm) {
                                     }).done(function(data) {
                                         if (data.status) {
                                             curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                                            if (curForm.parents().filter('.window').length == 1) {
+                                                curForm.append('<div class="window-btns"><button type="submit" class="btn --orange window-close-btn">OK</button></div>');
+                                            }
                                         } else {
                                             curForm.prepend('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
                                         }
@@ -683,6 +686,9 @@ function initForm(curForm) {
                         curForm.find('.message').remove();
                         if (data.status) {
                             curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                            if (curForm.parents().filter('.window').length == 1) {
+                                curForm.append('<div class="window-btns"><button type="submit" class="btn --orange window-close-btn">OK</button></div>');
+                            }
                         } else {
                             curForm.prepend('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
                         }
@@ -723,6 +729,9 @@ function initForm(curForm) {
                                     }).done(function(data) {
                                         if (data.status) {
                                             curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                                            if (curForm.parents().filter('.window').length == 1) {
+                                                curForm.append('<div class="window-btns"><button type="submit" class="btn --orange window-close-btn">OK</button></div>');
+                                            }
                                         } else {
                                             curForm.prepend('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
                                         }
