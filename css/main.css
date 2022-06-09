@@ -10247,14 +10247,14 @@ a.ui-button:active {
     .header:not(.--index) .header__nav-item {margin-right:0}
     .header-fixed .header__nav-item {margin-right:0}
     .header-fixed .header__nav-item:last-child {margin-right:0}
-    .header:not(.--index) .header__nav-link {padding:20px 36px 20px 20px}
+    .header:not(.--index) .header__nav-link {padding:20px 31px 20px 15px}
     .header-fixed .header__nav-link,
     .header-fixed .header:not(.--index) .header__nav-link {font-size:16px; line-height:19px; padding:16px 35px 16px 20px}
     .header:not(.--index) .header__nav-link.active,
     .header:not(.--index) .header__nav-item:hover .header__nav-link {background:#f4f4f4}
     .header-fixed .header__nav-link.active,
     .header-fixed .header__nav-item:hover .header__nav-link {background:#f4f4f4}
-    .header:not(.--index) .header__nav-link::before {right:20px}
+    .header:not(.--index) .header__nav-link::before {right:15px}
     .header-fixed .header__nav-link::before {right:20px; width:10px; height:6px; margin-top:-1px; background:url(../images/ico/arrow-menu-down-blue-fixed.svg) no-repeat}
     .header:not(.--index) .header__nav-list,
     .header-fixed .header__nav-list {left:0; top:100%; margin-top:30px; box-shadow:0px 4px 40px rgba(123, 123, 123, 0.15); font-size:16px; line-height:19px; padding:0}
