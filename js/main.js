@@ -775,3 +775,16 @@ function initForm(curForm) {
         }
     });
 }
+
+$(document).ready(function() {
+
+    if ($(window).width() < 1024) {
+        $('.club-gallery').slick({
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            prevArrow: '<button type="button" class="slick-prev"><svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.66667 4.83685L10.62 5.76552L5.56667 10.8369H19V12.1702H5.56667L10.62 17.2189L9.66667 18.1702L3 11.5035L9.66667 4.83685Z" fill="white"/></svg></button>',
+            nextArrow: '<button type="button" class="slick-next"><svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.3333 4.83685L11.38 5.76552L16.4333 10.8369H3V12.1702H16.4333L11.38 17.2189L12.3333 18.1702L19 11.5035L12.3333 4.83685Z" fill="white"/></svg></button>',
+        });
+    }
+
+});

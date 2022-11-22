@@ -10481,3 +10481,50 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
 .field__wrap select+label.error {position:absolute; right:0; top:100%}
 
 .checkbox {line-height:1.5em}
+
+.content__nav-item.--active .content__nav-link {color:rgba(0, 0, 0, 0.9)}
+
+.club-content {font-size:18px; line-height:28px; color:rgba(0, 0, 0, 0.85)}
+.club-content p {font-size:18px; line-height:28px; color:rgba(0, 0, 0, 0.85); margin:24px 0}
+.club-content h3 {margin:50px 0 16px 0; font-size:26px; line-height:32px}
+.club-content h3:first-child {margin-top:0}
+
+@media only screen and (max-width:1023px) {
+    .club-content {font-size:14px; line-height:21px}
+    .club-content p {font-size:14px; line-height:21px; margin:16px 0}
+    .club-content h3 {margin:40px 0 16px 0; font-size:22px; line-height:30px}
+    .club-content h3:first-child {margin-top:0}
+}
+
+.club-gallery {font-size:0; line-height:0; letter-spacing:-1px; margin:-2px -5px 0 -5px; position:relative}
+.club-gallery-item {display:inline-block; vertical-align:top; width:25%; padding:10px 5px 0 5px}
+.club-gallery-item a {display:block}
+.club-gallery-item a img {display:block; width:100%}
+
+.club-gallery .slick-prev,
+.club-gallery .slick-next {display:block; position:absolute; z-index:2; top:50%; width:32px; height:32px; border:none; border-radius:0; margin:-16px 0 0 0; padding:0; outline:none; -webkit-appearance:none; cursor:pointer; background:#FF6515}
+.club-gallery .slick-prev {left:0}
+.club-gallery .slick-next {right:0}
+.club-gallery .slick-prev svg {display:block; position:absolute; left:50%; top:50%; width:22px; height:22px; margin:-11px 0 0 -11px}
+.club-gallery .slick-next svg {display:block; position:absolute; left:50%; top:50%; width:22px; height:22px; margin:-11px 0 0 -11px}
+
+@media only screen and (max-width:1023px) {
+    .club-gallery {margin:24px 0 0 0; white-space:nowrap; position:relative; overflow:hidden}
+    .club-gallery-item {width:100%; padding:0}
+}
+
+.campus__person-club .educational__person {-webkit-box-align:flex-start; -ms-flex-align:flex-start; align-items:flex-start}
+.campus__person-club .educational__person-info {padding-top:16px}
+.educational__person-text {margin:0 0 16px 0; font-size:14px; line-height:18px; color:rgba(0, 0, 0, 0.9)}
+.editor .educational__person-text p {font-size:14px; line-height:18px; color:rgba(0, 0, 0, 0.9); margin-bottom:18px}
+.editor .campus__person-club a.educational__person-link {font-size:14px; line-height:18px}
+.editor a.overview__office-mail-club {font-size:14px; line-height:18px}
+
+@media only screen and (max-width:1023px) {
+    .campus__person-club .educational__person-info {padding-top:20px}
+    .educational__person-text {line-height:21px}
+    .editor .educational__person-text p {line-height:21px; margin-bottom:16px}
+    .editor a.overview__office-mail-club {font-size:16px; line-height:22px}
+}
+
+.club-contacts-text {font-size:14px; line-height:18px; color:rgba(0, 0, 0, 0.9); margin:32px 0}
