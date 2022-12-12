@@ -110,18 +110,6 @@ $(document).ready(function () {
                 nextArrow: $(this).parents('.department__slider-wrap').find('.next'),
             });
         });
-
-        // скролл
-        $(window).on('scroll', function () {
-            var scroll = $(this).scrollTop();
-
-            if (scroll > 1) {
-                $('.header.--index').addClass('--scroll');
-            } else {
-                $('.header.--index').removeClass('--scroll');
-            }
-            ;
-        });
     }
 
     // выбор файла
@@ -130,15 +118,9 @@ $(document).ready(function () {
         $('.clip-file').text(val);
     });
 
-    // мобильное меню
-    $('.hamburger').on('click', function () {
-        var items = $('body, html, .header, .mobile__menu');
-
-        items.toggleClass('--open');
-
-        if ($('.header').hasClass('--index')) {
-            $('.header').addClass('--scroll');
-        }
+    $('.content__nav-open').on('click', function () {
+        $(this).toggleClass('--active');
+        $(this).parents('.content__nav-item').find('.content__nav-hidden').slideToggle(150);
     });
 
     // мобильное меню ссылки
@@ -148,14 +130,6 @@ $(document).ready(function () {
     $('.content__nav-open').on('click', function () {
         $(this).toggleClass('--active');
         $(this).parents('.content__nav-item').find('.content__nav-hidden').slideToggle(150);
-    });
-
-    // карта сайта
-    $('.header__hamburger').on('click', function () {
-        $('.site-map').show();
-    });
-    $('.site-map__close').on('click', function () {
-        $('.site-map').hide();
     });
 
     // прилипающая навигация
@@ -429,10 +403,7 @@ $(window).on('load resize scroll', function() {
     $('body').append('<div id="body-test-height" style="position:fixed; left:0; top:0; right:0; bottom:0; z-index:-1"></div>');
     var windowHeight = $('#body-test-height').height();
     $('#body-test-height').remove();
-    var headerHeight = 80;
-    if (windowWidth < 768) {
-        headerHeight = 70;
-    }
+    var headerHeight = 42;
 
     if (windowScroll > headerHeight) {
         $('html').addClass('header-fixed');
@@ -564,11 +535,24 @@ function windowOpen(linkWindow, dataWindow) {
 
 function windowClose() {
     if ($('.window').length > 0) {
-        $('.window').remove();
-        $('html').removeClass('window-open');
-        $('body').css({'margin-right': 0});
-        $('.wrapper').css({'top': 0});
-        $(window).scrollTop($('.wrapper').data('curScroll'));
+        var isEmptyForm = true;
+        $('.window input[type="text"], .window textarea, .window select').each(function() {
+            if ($(this).val() != '') {
+                isEmptyForm = false;
+            }
+        });
+        if (isEmptyForm) {
+            $('.window').remove();
+            $('html').removeClass('window-open');
+            $('body').css({'margin-right': 0});
+            $('.wrapper').css({'top': 0});
+            $(window).scrollTop($('.wrapper').data('curScroll'));
+        } else {
+            if (confirm('Закрыть форму?')) {
+                $('.window input[type="text"], .window textarea, .window select').val('');
+                windowClose();
+            }
+        }
     }
 }
 
@@ -868,7 +852,7 @@ $(document).ready(function() {
         for (var i = 0; i < galleryLength; i++) {
             var curGalleryItem = curGallery.eq(i);
             windowHTML +=               '<div class="window-photo-slider-list-item">' +
-                                            '<div class="window-photo-slider-list-item-inner"><img alt="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBzdHlsZT0ibWFyZ2luOiBhdXRvOyBiYWNrZ3JvdW5kOiBub25lOyBkaXNwbGF5OiBibG9jazsgc2hhcGUtcmVuZGVyaW5nOiBhdXRvOyIgd2lkdGg9IjM4cHgiIGhlaWdodD0iMzhweCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkY2NTE1IiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4KICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGR1cj0iMXMiIHZhbHVlcz0iMCA1MCA1MDszNjAgNTAgNTAiIGtleVRpbWVzPSIwOzEiPjwvYW5pbWF0ZVRyYW5zZm9ybT4KPC9jaXJjbGU+Cjwvc3ZnPg==" data-src="' + curGalleryItem.attr('href') + '" /></div>' +
+                                            '<div class="window-photo-slider-list-item-inner zoom"><img alt="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBzdHlsZT0ibWFyZ2luOiBhdXRvOyBiYWNrZ3JvdW5kOiBub25lOyBkaXNwbGF5OiBibG9jazsgc2hhcGUtcmVuZGVyaW5nOiBhdXRvOyIgd2lkdGg9IjM4cHgiIGhlaWdodD0iMzhweCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkY2NTE1IiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4KICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGR1cj0iMXMiIHZhbHVlcz0iMCA1MCA1MDszNjAgNTAgNTAiIGtleVRpbWVzPSIwOzEiPjwvYW5pbWF0ZVRyYW5zZm9ybT4KPC9jaXJjbGU+Cjwvc3ZnPg==" data-src="' + curGalleryItem.attr('href') + '" /></div>' +
                                         '</div>';
         }
         windowHTML +=               '</div>' +
@@ -906,6 +890,8 @@ $(document).ready(function() {
                 }
             });
         }
+
+        zoom();
 
         var curIMG = $('.window-photo-slider-list-item').eq(curIndex).find('img');
         curIMG.attr('src', curIMG.attr('data-src'));
@@ -945,6 +931,20 @@ $(document).ready(function() {
                     }
                 }, 3000);
             }
+
+            /*            elem = curIMG[0];
+            panzoom = Panzoom(elem);
+            elem.addEventListener('panzoomchange', function(event) {
+                if (event.detail.scale == 1) {
+                    $('.window-photo-slider-list').slick('slickSetOption', 'swipe', true);
+                    $('.window-photo-slider-list').slick('slickSetOption', 'touchMove', true);
+                    $('.window-photo-slider-list').slick('slickSetOption', 'draggable', true);
+                } else {
+                    $('.window-photo-slider-list').slick('slickSetOption', 'swipe', false);
+                    $('.window-photo-slider-list').slick('slickSetOption', 'touchMove', false);
+                    $('.window-photo-slider-list').slick('slickSetOption', 'draggable', false);
+                }
+            });*/
         });
 
         e.preventDefault();
@@ -970,6 +970,58 @@ $(document).ready(function() {
             if ($('.window-photo').length > 0) {
                 $('.window-photo-close').trigger('click');
             }
+        }
+    });
+
+});
+
+$(document).ready(function() {
+
+    $('.header-new-nav-add').click(function(e) {
+        $('html').removeClass('header-new-search-open');
+        if ($('html').hasClass('header-new-nav-add-open')) {
+            $('html').removeClass('header-new-nav-add-open');
+            $(window).scrollTop($('.wrapper').data('curScroll'));
+        } else {
+            var curScroll = $(window).scrollTop();
+            $('.wrapper').data('curScroll', curScroll);
+            $('html').addClass('header-new-nav-add-open');
+        }
+        e.preventDefault();
+    });
+
+    $('.header-new-nav-search').click(function(e) {
+        if ($('html').hasClass('header-new-nav-add-open')) {
+            $('html').removeClass('header-new-nav-add-open');
+            $(window).scrollTop($('.wrapper').data('curScroll'));
+        }
+        $('html').toggleClass('header-new-search-open');
+        e.preventDefault();
+    });
+
+    $('.programs-new-group-title').click(function() {
+        $(this).parent().toggleClass('open');
+    });
+
+    $('.programs-new-list-more a').click(function(e) {
+        $(this).parent().parent().find('.programs-new-list').toggleClass('open');
+        e.preventDefault();
+    });
+
+    $('.educational-curriculum-new-group-title').click(function() {
+        $(this).parent().toggleClass('open');
+    });
+
+    $('.educational-curriculum-new-list-more a').click(function(e) {
+        $(this).parent().parent().toggleClass('open');
+        e.preventDefault();
+    });
+
+    $('.header-new-add-menu > ul > li > a').click(function(e) {
+        if ($(window).width() < 1220) {
+            $('html').toggleClass('header-new-nav-add-sub-open');
+            $(this).parent().toggleClass('open');
+            e.preventDefault();
         }
     });
 
