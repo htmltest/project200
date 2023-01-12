@@ -10070,7 +10070,7 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
 .window-photo-preview .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {background:#FF6515; border-radius:3px}
 .window-photo-preview .mCSB_scrollTools .mCSB_draggerRail {background:#F8F7F6; width:6px; border-radius:3px}
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width:1023px) and (orientation:portrait) {
     .window-photo-preview {top:auto; right:0; width:auto; height:98px; bottom:13px}
     .window-photo-preview-list {margin:0; width:auto; display:inline-block; vertical-align:top; white-space:nowrap}
     .window-photo-preview-list-item {display:inline-block; vertical-align:top; padding:0 0 0 10px}
@@ -10082,16 +10082,31 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
     .window-photo-preview .mCSB_scrollTools .mCSB_draggerRail {width:100%; height:6px}
 }
 
+@media screen and (max-width:1023px) and (orientation:landscape) {
+    .window-photo-preview {width:131px}
+    .window-photo-preview-list {margin:0; width:120px}
+}
+
 .window-photo-close {display:block; position:absolute; right:20px; top:20px}
 .window-photo-close svg {display:block; fill:#000; transition:all 0.2s; width:14px; height:14px}
 @media screen and (min-width:1024px) {
     .window-photo-close:hover svg {fill:#FF6515}
 }
 
+@media screen and (max-width:1023px) and (orientation:landscape) {
+    .window-photo-close {right:10px; top:10px; z-index:99}
+    .window-photo-close svg {width:20px; height:20px}
+}
+
 .window-photo-download {display:block; position:absolute; right:107px; top:20px}
 .window-photo-download svg {display:block; fill:#000; transition:all 0.2s; width:15px; height:14px}
 @media screen and (min-width:1024px) {
     .window-photo-download:hover svg {fill:#FF6515}
+}
+
+@media screen and (max-width:1023px) and (orientation:landscape) {
+    .window-photo-download {right:10px; top:60px; z-index:99}
+    .window-photo-download svg {width:20px; height:20px}
 }
 
 .window-photo-social {display:block; position:absolute; right:64px; top:20px}
@@ -10115,6 +10130,13 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
     .window-photo-social-item.window-photo-social-item-vk:hover svg {fill:#FF6515}
 }
 
+@media screen and (max-width:1023px) and (orientation:landscape) {
+    .window-photo-social {right:10px; top:110px; z-index:99}
+    .window-photo-social-icon svg {width:18px; height:20px}
+    .window-photo-social-window {left:auto; right:0; transform:none}
+    .window-photo-social-window::before {left:auto; right:2px}
+}
+
 .window-photo-slider {position:absolute; left:312px; top:88px; right:65px; bottom:134px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap}
 .window-photo-slider-list {position:relative; overflow:hidden}
 .window-photo-slider-list-item {display:inline-block; vertical-align:top; width:100%}
@@ -10124,6 +10146,10 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
 
 @media screen and (max-width:1023px) {
     .window-photo-slider {left:20px; right:20px; bottom:253px}
+}
+
+@media screen and (max-width:1023px) and (orientation:landscape) {
+    .window-photo-slider {left:141px; right:40px; bottom:10px; top:10px}
 }
 
 .window-photo-slider .slick-prev,
@@ -10590,4 +10616,172 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
     .educational-department-new-item-photo img {width:100%}
     .educational-department-new-item-title {display:block; margin:10px 0 0 0; padding:0; font-size:14px; line-height:22px}
     .educational-department-new-item-title a {line-height:22px}
+}
+
+.distance-header-banner {min-height:0; padding-top:60px; padding-bottom:40px; display:block; background:linear-gradient(93.78deg, #5C5CDB 0%, #4FC1E9 100%)}
+.distance-header-banner::before {display:none}
+.distance-header-banner::after {content:""; display:block; position:absolute; right:66px; top:0; width:388px; height:360px; background:url(../images/pic/distance/header-banner.png) no-repeat}
+.distance-header-banner h1 {margin:0; padding:0; font-size:44px; line-height:52px; font-family:"Golos_Medium", "Golos-Medium", "Arial", sans-serif; font-weight:normal; color:#FFFFFF}
+.distance-header-banner ul {margin:20px 0 0 0; padding:0; position:relative; color:rgba(255, 255, 255, 0.85); list-style:none; font-size:18px; line-height:18px}
+.distance-header-banner ul li {margin:15px 0 0 0; padding:0 0 0 18px}
+.distance-header-banner ul li::before {background:#FFFFFF}
+
+@media screen and (max-width:1219px) {
+    .distance-header-banner {padding-top:199px; padding-bottom:42px; background:linear-gradient(105.82deg, #5C5CDB 18.58%, #4FC1E9 100%)}
+    .distance-header-banner::after {left:0; right:auto; width:310px; height:372px; background:url(../images/pic/distance/header-banner-mobile.png) no-repeat}
+    .distance-header-banner h1 {font-size:28px; line-height:36px}
+    .distance-header-banner ul {margin:12px 0 0 0; font-size:14px; line-height:14px}
+    .distance-header-banner ul li {margin:12px 0 0 0}
+    .distance-header-banner ul li::before {top:8px}
+}
+
+.distance-orgs {margin:40px -10px 0 -10px; font-size:0; line-height:0; letter-spacing:-1px}
+.distance-orgs-item {display:inline-block; vertical-align:top; width:33.33%; padding:20px 10px 0 10px}
+.distance-orgs-item-inner {display:block; background:#FAFAFA; text-align:center; padding:20px; transition:transform 0.2s}
+@media screen and (min-width:1220px) {
+    a.distance-orgs-item-inner:hover {transform:translateY(-5px)}
+}
+.distance-orgs-item-logo {height:90px; line-height:90px}
+.distance-orgs-item-logo img {display:inline-block; vertical-align:middle; max-width:100%; max-height:100%}
+.distance-orgs-item-title {padding:10px 0 0 0; font-size:18px; line-height:30px; letter-spacing:0; color:rgba(0, 0, 0, 0.85); transition:color 0.2s}
+@media screen and (min-width:1220px) {
+    a.distance-orgs-item-inner:hover .distance-orgs-item-title {color:#FF6515}
+}
+
+@media screen and (max-width:1219px) {
+    .distance-orgs {margin:20px 0 0 0}
+    .distance-orgs-item {display:block; width:auto; padding:20px; margin:10px 0 0 0; background:#FAFAFA}
+    .distance-orgs-item-inner {display:table; width:100%; text-align:left; padding:0}
+    .distance-orgs-item-logo {display:table-cell; vertical-align:middle; width:129px; height:auto; line-height:0}
+    .distance-orgs-item-logo img {width:129px; height:90px; max-width:none; max-height:none}
+    .distance-orgs-item-title {display:table-cell; vertical-align:middle; padding:0 0 0 10px; font-size:14px; line-height:18px}
+}
+
+.distance-about {margin:100px 0 80px 0}
+.distance-about::after {content:""; display:block; clear:both}
+.distance-about-text {float:left; width:calc(100% - 517px); font-size:18px; line-height:28px}
+.distance-about-text h2 {font-size:32px; line-height:52px; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; font-weight:normal; margin:0 0 24px 0; padding:0}
+.distance-about-text h4 {font-size:18px; line-height:24px; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; font-weight:normal; margin:30px 0 0 0}
+.distance-about-text p {margin:20px 0 0 0}
+.distance-about-text ul {margin:20px 0 0 0}
+.distance-about-text ul li {margin:20px 0 0 0}
+.distance-about-photos {float:right; width:487px; line-height:0}
+
+@media screen and (max-width:1219px) {
+    .distance-about {margin:60px 0}
+    .distance-about-text {float:none; width:auto; font-size:14px; line-height:21px}
+    .distance-about-text h2 {font-size:22px; line-height:30px; margin:0 0 20px 0}
+    .distance-about-text h4 {font-size:14px; line-height:24px; margin:20px 0 0 0}
+    .distance-about-text p {margin:10px 0 0 0}
+    .distance-about-text ul {margin:10px 0 0 0}
+    .distance-about-text ul li {margin:10px 0 0 0}
+    .distance-about-text ul li::before {top:8px}
+    .distance-about-photos {display:none}
+}
+
+.distance-courses {margin:80px 0 100px 0}
+.distance-courses h2 {font-size:32px; line-height:52px; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; font-weight:normal; margin:0; padding:0}
+.distance-courses-groups {margin:32px 0 0 0; border-bottom:1px solid #DBDBDB}
+.distance-courses-group {border-top:1px solid #DBDBDB; position:relative}
+.distance-courses-group-title {color:rgba(0, 0, 0, 0.9); cursor:pointer; transition:color 0.2s; position:relative; padding:21px 24px 21px 0; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; font-size:24px; line-height:22px}
+@media screen and (min-width:1220px) {
+    .distance-courses-group-title:hover {color:#FF6515}
+}
+.distance-courses-group-title svg {display:block; width:24px; height:24px; position:absolute; right:0; top:20px; fill:rgba(0, 0, 0, 0.85)}
+.distance-courses-group-title svg+svg {display:none}
+.distance-courses-group.open .distance-courses-group-title svg {display:none}
+.distance-courses-group.open .distance-courses-group-title svg+svg {display:block}
+.distance-courses-group-container {position:absolute; left:-9999px; top:-9999px; width:100%; opacity:0; transition:opacity 0.2s}
+.distance-courses-group.open .distance-courses-group-container {position:relative; left:auto; top:auto; opacity:1}
+.distance-courses-item {padding:20px 0; border-top:1px solid #DBDBDB}
+.distance-courses-item:first-child {border-top:none}
+.distance-courses-item::after {content:""; display:block; clear:both}
+.distance-courses-item-photo {float:left; width:244px; line-height:0}
+.distance-courses-item-photo img {display:block; width:100%}
+.distance-courses-item-photo+.distance-courses-item-container {float:right; width:calc(100% - 268px)}
+.distance-courses-item-title {max-width:590px; font-size:20px; line-height:30px; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif}
+.distance-courses-item-title a {color:#2CA1C7}
+@media screen and (min-width:1220px) {
+    .distance-courses-item-title a:hover {color:#FF6515}
+}
+.distance-courses-item-difficulty {margin:12px 0 0 0}
+.distance-courses-item-difficulty::after {content:""; display:block; clear:both}
+.distance-courses-item-difficulty-stars {float:left; width:170px; position:relative; overflow:hidden; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap}
+.distance-courses-item-difficulty-stars svg {display:inline-block; vertical-align:top; width:24px; height:24px; fill:none; margin:0 10px 0 0}
+.distance-courses-item-difficulty-stars-front {position:absolute; left:0; top:0; height:24px; overflow:hidden}
+.distance-courses-item-difficulty-title {float:left; font-size:14px; line-height:24px; color:rgba(6, 42, 54, 0.47)}
+.distance-courses-item-anonce {margin:12px 0 0 0; font-size:18px; line-height:28px; color:rgba(0, 0, 0, 0.85)}
+
+@media screen and (max-width:1219px) {
+    .distance-courses {margin:60px 0}
+    .distance-courses h2 {font-size:22px; line-height:30px}
+    .distance-courses-group-title {padding:20px 59px 20px 0; font-size:18px; line-height:27px}
+    .distance-courses-group-title svg {top:50%; margin-top:-12px}
+    .distance-courses-list {padding:0 0 20px 0}
+    .distance-courses-item {padding:40px 0 0 0; border-top:none}
+    .distance-courses-item:first-child {padding:0}
+    .distance-courses-item-photo {float:none; width:auto}
+    .distance-courses-item-photo+.distance-courses-item-container {float:none; width:auto; margin:20px 0 0 0}
+    .distance-courses-item-title {font-size:14px; line-height:21px}
+    .distance-courses-item-anonce {font-size:14px; line-height:21px}
+}
+
+.distance-media {margin:100px 0}
+.distance-media h2 {font-size:32px; line-height:52px; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; font-weight:normal; margin:0; padding:0}
+.distance-media-list {font-size:0; line-height:0; letter-spacing:-1px; margin:0 0 0 -49px}
+.distance-media-item {display:inline-block; vertical-align:top; padding:65px 0 0 49px; position:relative; width:33.33%}
+.distance-media-item::before {content:""; display:block; position:absolute; left:0; top:32px; right:0; height:1px; background:#D9D9D9}
+.distance-media-item::after {content:""; display:block; position:absolute; left:24px; top:65px; bottom:0; width:1px; background:#D9D9D9}
+.distance-media-item:nth-child(3n-2)::before {left:49px}
+.distance-media-item:nth-child(3n-2)::after {display:none}
+.distance-media-item a {display:block; position:relative}
+.distance-media-item-photo {position:relative}
+.distance-media-item-photo img {display:block; width:100%}
+.distance-media-item-photo::after {content:""; display:block; position:absolute; bottom:0; right:0; width:56px; height:56px; background:#FF6515 url("../images/ico/arrow-right-white.svg") no-repeat center center/20px; opacity:0; transition:opacity 0.2s}
+@media screen and (min-width:1220px) {
+    .distance-media-item a:hover .distance-media-item-photo::after {opacity:1}
+}
+.distance-media-item-logo {margin:24px 0 0 0}
+.distance-media-item-logo img {height:33px; display:block}
+.distance-media-item-title {margin:24px 0 0 0; font-size:20px; line-height:26px; letter-spacing:0; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:rgba(0, 0, 0, 0.9); transition:color 0.2s}
+@media screen and (min-width:1220px) {
+    .distance-media-item a:hover .distance-media-item-title {color:#FF6515}
+}
+
+@media screen and (max-width:1219px) {
+    .distance-media {margin:60px 0}
+    .distance-media h2 {font-size:22px; line-height:30px}
+    .distance-media-list {margin:20px 0 0 0}
+    .distance-media-item {display:block; padding:0; width:auto; margin:30px 0 0 0}
+    .distance-media-item:first-child {margin:0}
+    .distance-media-item::before {display:none}
+    .distance-media-item::after {display:none}
+    .distance-media-item-logo {margin:16px 0 0 0}
+    .distance-media-item-title {margin:16px 0 0 0; font-size:16px; line-height:24px; color:#2CA1C7; text-decoration:underline}
+}
+
+.distance-team {margin:100px 0 0 0; padding:0 0 32px 0; border-bottom:1px solid #DBDBDB}
+.distance-team h2 {font-size:32px; line-height:52px; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; font-weight:normal; margin:0; padding:0 0 32px 0; border-bottom:1px solid #DBDBDB}
+.distance-team-list {margin:0 -32px; font-size:0; line-height:0; letter-spacing:-1px}
+.distance-team-item {display:inline-block; vertical-align:top; width:25%; padding:32px 32px 0 32px}
+.distance-team-item-photo img {display:block; width:104px; height:104px; border-radius:50%}
+.distance-team-item-title {margin:24px 0 0 0; font-size:20px; line-height:26px; letter-spacing:0; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif}
+.distance-team-item-title a {color:rgba(0, 0, 0, 0.9); transition:color 0.2s; text-decoration:underline}
+@media screen and (min-width:1220px) {
+    .distance-team-item-title a:hover {color:#FF6515}
+}
+.distance-team-item-links {margin:16px 0 0 0; font-size:16px; line-height:24px; letter-spacing:0; color:rgba(0, 0, 0, 0.9)}
+.distance-team-item-links a {color:#2CA1C7}
+@media screen and (min-width:1220px) {
+    .distance-team-item-links a:hover {color:#FF6515}
+}
+
+@media screen and (max-width:1219px) {
+    .distance-team {margin:60px 0 0 0; padding:0; border-bottom:none}
+    .distance-team h2 {font-size:22px; line-height:30px; padding:0; border-bottom:none}
+    .distance-team-list {margin:20px 0 0 0}
+    .distance-team-item {display:block; width:auto; padding:0; margin:20px 0 0 0}
+    .distance-team-item-title {margin:16px 0 0 0; font-size:16px; line-height:24px}
+    .distance-team-item-title a {color:#2CA1C7; text-decoration:underline}
+    .distance-team-item-links {font-size:14px; line-height:21px}
 }

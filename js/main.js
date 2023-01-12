@@ -868,14 +868,18 @@ $(document).ready(function() {
 
         $('.window-photo').each(function() {
             var marginPhoto = 166;
-            if ($(window).width() < 1200) {
+            if ($(window).width() < 1200 && $(window).width() < $(window).height()) {
                 marginPhoto = 253;
             }
+            if ($(window).width() < 1200 && $(window).width() > $(window).height()) {
+                marginPhoto = 20;
+            }
+
             var newHeight = marginPhoto;
             $('.window-photo-slider-list-item-inner').css({'height': 'calc(100vh - ' + newHeight + 'px)', 'line-height': 'calc(100vh - ' + newHeight + 'px)'});
         });
 
-        if ($(window).width() > 1199) {
+        if ($(window).width() > 1199 || $(window).width() > $(window).height()) {
             $('.window-photo-preview-inner').mCustomScrollbar({
                 axis: 'y',
                 scrollButtons: {
@@ -907,7 +911,15 @@ $(document).ready(function() {
             nextArrow: '<button type="button" class="slick-next"><svg viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.1373 11.7755L6.12012 6.49999L1.1373 1.22448" stroke-width="2" /></svg></button>',
             dots: false,
             speed: 250,
-            initialSlide: curIndex
+            initialSlide: curIndex,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        arrows: false
+                    }
+                }
+            ]
         }).on('setPosition', function(event, slick) {
             var currentSlide = $('.window-photo-slider-list').slick('slickCurrentSlide');
             $('.window-photo-preview-list-item.active').removeClass('active');
@@ -932,19 +944,6 @@ $(document).ready(function() {
                 }, 3000);
             }
 
-            /*            elem = curIMG[0];
-            panzoom = Panzoom(elem);
-            elem.addEventListener('panzoomchange', function(event) {
-                if (event.detail.scale == 1) {
-                    $('.window-photo-slider-list').slick('slickSetOption', 'swipe', true);
-                    $('.window-photo-slider-list').slick('slickSetOption', 'touchMove', true);
-                    $('.window-photo-slider-list').slick('slickSetOption', 'draggable', true);
-                } else {
-                    $('.window-photo-slider-list').slick('slickSetOption', 'swipe', false);
-                    $('.window-photo-slider-list').slick('slickSetOption', 'touchMove', false);
-                    $('.window-photo-slider-list').slick('slickSetOption', 'draggable', false);
-                }
-            });*/
         });
 
         e.preventDefault();
@@ -973,6 +972,39 @@ $(document).ready(function() {
         }
     });
 
+});
+
+$(window).on('resize', function() {
+    $('.window-photo').each(function() {
+        var marginPhoto = 166;
+        if ($(window).width() < 1200 && $(window).width() < $(window).height()) {
+            marginPhoto = 253;
+        }
+        if ($(window).width() < 1200 && $(window).width() > $(window).height()) {
+            marginPhoto = 20;
+        }
+
+        var newHeight = marginPhoto;
+        $('.window-photo-slider-list-item-inner').css({'height': 'calc(100vh - ' + newHeight + 'px)', 'line-height': 'calc(100vh - ' + newHeight + 'px)'});
+
+        if ($(window).width() > 1199 || $(window).width() > $(window).height()) {
+            $('.window-photo-preview-inner').mCustomScrollbar('destroy');
+            $('.window-photo-preview-inner').mCustomScrollbar({
+                axis: 'y',
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        } else {
+            $('.window-photo-preview-inner').mCustomScrollbar('destroy');
+            $('.window-photo-preview-inner').mCustomScrollbar({
+                axis: 'x',
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        }
+    });
 });
 
 $(document).ready(function() {
@@ -1023,6 +1055,38 @@ $(document).ready(function() {
             $(this).parent().toggleClass('open');
             e.preventDefault();
         }
+    });
+
+    $('.distance-courses-group-title').click(function() {
+        $(this).parent().toggleClass('open');
+    });
+
+});
+
+$(window).on('load resize', function() {
+
+    $('.distance-media-list').each(function() {
+        var curList = $(this);
+
+        curList.find('.distance-media-item a').css({'min-height': '0px'});
+
+        curList.find('.distance-media-item a').each(function() {
+            var curBlock = $(this);
+            var curHeight = curBlock.outerHeight();
+            var curTop = curBlock.parents().filter('.distance-media-item').offset().top;
+
+            curList.find('.distance-media-item a').each(function() {
+                var otherBlock = $(this);
+                if (otherBlock.parents().filter('.distance-media-item').offset().top == curTop) {
+                    var newHeight = otherBlock.outerHeight();
+                    if (newHeight > curHeight) {
+                        curBlock.css({'min-height': newHeight + 'px'});
+                    } else {
+                        otherBlock.css({'min-height': curHeight + 'px'});
+                    }
+                }
+            });
+        });
     });
 
 });
