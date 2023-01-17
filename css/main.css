@@ -311,6 +311,15 @@ ul li:before {
   background: #FF6515;
 }
 
+@media only screen and (max-width: 767px) {
+    .list-item:before,
+    .list li:before,
+    ul-item:before,
+    ul li:before {
+      top: 8px;
+    }
+}
+
 .list-item:last-child,
 .list li:last-child,
 ul-item:last-child,
@@ -10553,29 +10562,6 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
 
 @media screen and (max-width:1219px) {
     .educational-curriculum-new-list {font-size:14px; margin:0 -10px}
-}
-
-.when-new {display:table; width:100%; border-collapse:collapse}
-.when-new-headers {display:table-row}
-.when-new-header {display:table-cell; vertical-align:top; padding:0 15px 10px 15px; text-align:center; font-size:10px; line-height:22px; letter-spacing:0.05em; text-transform:uppercase; color:rgba(44, 99, 132, 0.7); border-bottom:1px solid #DBDBDB}
-.when-new-header:first-child {text-align:left}
-.when-new-item {display:table-row}
-.when-new-item-title {display:table-cell; vertical-align:top; padding:18px 15px; font-family:"Golos_Medium", "Golos-Medium", "Arial", sans-serif; font-size:18px; line-height:18px; color:#000000; border-bottom:1px solid #DBDBDB}
-.when-new-item-title span {font-family:"Golos_Regular", "Golos-Regular", "Arial", sans-serif; margin:0 0 0 15px; font-size:14px; line-height:14px; color:rgba(6, 42, 54, 0.47)}
-.when-new-item-has {display:table-cell; vertical-align:top; padding:18px 15px; text-align:center; font-size:24px; line-height:24px; color:#FF6515; border-bottom:1px solid #DBDBDB; font-family:"Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif}
-.when-new-item-has-not {color:rgba(0, 0, 0, 0)}
-.when-new-mobile-header {display:none}
-
-@media screen and (max-width:1219px) {
-    .when-new {display:block; width:auto; border-top:1px solid #DBDBDB}
-    .when-new-headers {display:none}
-    .when-new-item {display:block; border-bottom:1px solid #DBDBDB; text-align:center; padding:16px 0}
-    .when-new-item::after {content:""; display:block; clear:both}
-    .when-new-item-title {display:block; padding:0; border-bottom:none}
-    .when-new-item-has {display:block; float:left; padding:16px 0 0 0; width:33.33%; border-bottom:none}
-    .when-new-item-has-not {color:#DBDBDB}
-    .when-new-mobile-header {display:block; font-size:10px; line-height:22px; letter-spacing:0.05em; text-transform:uppercase; color:#FF6515; font-family:"Golos_Regular", "Golos-Regular", "Arial", sans-serif}
-    .when-new-item-has-not .when-new-mobile-header {color:rgba(44, 99, 132, 0.7)}
 }
 
 .educational-program-logo-new {display:table; width:100%; border-collapse:collapse}
