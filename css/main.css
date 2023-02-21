@@ -10002,7 +10002,6 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
 .checkbox__wrap label.error {position:absolute; top:-25px; left:0}
 .checkbox__wrap input.error+label.error+label {margin-top:25px}
 
-.grecaptcha-badge {visibility:hidden}
 .captcha-notice {margin:20px 0; font-size:12px; line-height:14px}
 .captcha-notice a {text-decoration:underline}
 

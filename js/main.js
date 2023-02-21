@@ -601,164 +601,61 @@ function initForm(curForm) {
         });
     });
 
+    curForm.find('.captcha-container').each(function() {
+        if (!window.smartCaptcha) {
+            return;
+        }
+        var curID = window.smartCaptcha.render(this, {
+            sitekey: 'uahGSHTKJqjaJ0ezlhjrbOYH4OxS6zzL9CZ47OgY',
+            callback: smartCaptchaCallback,
+            invisible: true,
+            hideShield: true,
+        });
+        $(this).attr('data-smartid', curID);
+        window.smartCaptcha.execute(curID);
+    });
+
     curForm.validate({
         ignore: '',
         submitHandler: function(form) {
             var curForm = $(form);
             if (curForm.hasClass('ajax-form')) {
-                if (curForm.hasClass('recaptcha-form')) {
-                    grecaptcha.ready(function() {
-                        grecaptcha.execute('6LdHSvgcAAAAAHfkqTliNRLNbN8n4oSa0UJfMCU3', {action: 'submit'}).then(function(token) {
-                            $.ajax({
-                                type: 'POST',
-                                url: curForm.attr('data-captchaurl'),
-                                dataType: 'json',
-                                data: 'recaptcha_response=' + token,
-                                cache: false
-                            }).fail(function(jqXHR, textStatus, errorThrown) {
-                                alert('Service down' + textStatus);
-                                curForm.removeClass('loading');
-                            }).done(function(data) {
-                                if (data.status) {
-                                    curForm.addClass('loading');
-                                    var formData = new FormData(form);
+                curForm.addClass('loading');
+                var formData = new FormData(form);
 
-                                    if (curForm.find('[type=file]').length != 0) {
-                                        var file = curForm.find('[type=file]')[0].files[0];
-                                        formData.append('file', file);
-                                    }
-
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: curForm.attr('action'),
-                                        processData: false,
-                                        contentType: false,
-                                        dataType: 'json',
-                                        data: formData,
-                                        cache: false
-                                    }).done(function(data) {
-                                        if (data.status) {
-                                            curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
-                                            if (curForm.parents().filter('.window').length == 1) {
-                                                curForm.append('<div class="window-btns"><button type="submit" class="btn --orange window-close-btn">OK</button></div>');
-                                            }
-                                        } else {
-                                            curForm.prepend('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
-                                        }
-                                        curForm.removeClass('loading');
-                                    });
-                                } else {
-                                    alert('Fail Google reCAPTCHA v3.');
-                                    curForm.removeClass('loading');
-                                }
-                            });
-                        });
-                    });
-                } else {
-                    curForm.addClass('loading');
-                    var formData = new FormData(form);
-
-                    $.ajax({
-                        type: 'POST',
-                        url: curForm.attr('action'),
-                        processData: false,
-                        contentType: false,
-                        dataType: 'json',
-                        data: formData,
-                        cache: false
-                    }).done(function(data) {
-                        curForm.find('.message').remove();
-                        if (data.status) {
-                            curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
-                            if (curForm.parents().filter('.window').length == 1) {
-                                curForm.append('<div class="window-btns"><button type="submit" class="btn --orange window-close-btn">OK</button></div>');
-                            }
-                        } else {
-                            curForm.prepend('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                $.ajax({
+                    type: 'POST',
+                    url: curForm.attr('action'),
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    data: formData,
+                    cache: false
+                }).done(function(data) {
+                    curForm.find('.message').remove();
+                    if (data.status) {
+                        curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                        if (curForm.parents().filter('.window').length == 1) {
+                            curForm.append('<div class="window-btns"><button type="submit" class="btn --orange window-close-btn">OK</button></div>');
                         }
-                        curForm.removeClass('loading');
-                    });
-                }
-            } else if (curForm.hasClass('window-form')) {
-                if (curForm.hasClass('recaptcha-form')) {
-                    grecaptcha.ready(function() {
-                        grecaptcha.execute('6LdHSvgcAAAAAHfkqTliNRLNbN8n4oSa0UJfMCU3', {action: 'submit'}).then(function(token) {
-                            $.ajax({
-                                type: 'POST',
-                                url: curForm.attr('data-captchaurl'),
-                                dataType: 'json',
-                                data: 'recaptcha_response=' + token,
-                                cache: false
-                            }).fail(function(jqXHR, textStatus, errorThrown) {
-                                alert('Service down.' + textStatus);
-                                curForm.removeClass('loading');
-                            }).done(function(data) {
-                                if (data.status) {
-                                    curForm.addClass('loading');
-                                    var formData = new FormData(form);
-
-                                    if (curForm.find('[type=file]').length != 0) {
-                                        var file = curForm.find('[type=file]')[0].files[0];
-                                        formData.append('file', file);
-                                    }
-
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: curForm.attr('action'),
-                                        processData: false,
-                                        contentType: false,
-                                        dataType: 'json',
-                                        data: formData,
-                                        cache: false
-                                    }).done(function(data) {
-                                        if (data.status) {
-                                            curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
-                                            if (curForm.parents().filter('.window').length == 1) {
-                                                curForm.append('<div class="window-btns"><button type="submit" class="btn --orange window-close-btn">OK</button></div>');
-                                            }
-                                        } else {
-                                            curForm.prepend('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
-                                        }
-                                    });
-                                    curForm.removeClass('loading');
-                                } else {
-                                    alert('Fail Google reCAPTCHA v3.');
-                                    curForm.removeClass('loading');
-                                }
-                            });
-                        });
-                    });
-                } else {
-                    var formData = new FormData(form);
-
-                    windowOpen(curForm.attr('action'), formData);
-                }
-            } else if (curForm.hasClass('recaptcha-form')) {
-                grecaptcha.ready(function() {
-                    grecaptcha.execute('6LdHSvgcAAAAAHfkqTliNRLNbN8n4oSa0UJfMCU3', {action: 'submit'}).then(function(token) {
-                        $.ajax({
-                            type: 'POST',
-                            url: curForm.attr('data-captchaurl'),
-                            dataType: 'json',
-                            data: 'recaptcha_response=' + token,
-                            cache: false
-                        }).fail(function(jqXHR, textStatus, errorThrown) {
-                            alert('Service down.' + textStatus);
-                        }).done(function(data) {
-                            if (data.status) {
-                                form.submit();
-                            } else {
-                                alert('Fail Google reCAPTCHA v3.');
-                            }
-                        });
-                    });
+                    } else {
+                        curForm.prepend('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                    }
+                    curForm.removeClass('loading');
                 });
+            } else if (curForm.hasClass('window-form')) {
+                var formData = new FormData(form);
+                windowOpen(curForm.attr('action'), formData);
             } else {
                 form.submit();
             }
         }
     });
 }
+
+function smartCaptchaLoad() {}
+
+function smartCaptchaCallback(token) {}
 
 $(document).ready(function() {
 
