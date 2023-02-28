@@ -610,44 +610,68 @@ function initForm(curForm) {
             callback: smartCaptchaCallback,
             invisible: true,
             hideShield: true,
+            hl: 'en'
         });
         $(this).attr('data-smartid', curID);
-        window.smartCaptcha.execute(curID);
     });
 
     curForm.validate({
         ignore: '',
         submitHandler: function(form) {
             var curForm = $(form);
-            if (curForm.hasClass('ajax-form')) {
-                curForm.addClass('loading');
-                var formData = new FormData(form);
 
-                $.ajax({
-                    type: 'POST',
-                    url: curForm.attr('action'),
-                    processData: false,
-                    contentType: false,
-                    dataType: 'json',
-                    data: formData,
-                    cache: false
-                }).done(function(data) {
-                    curForm.find('.message').remove();
-                    if (data.status) {
-                        curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
-                        if (curForm.parents().filter('.window').length == 1) {
-                            curForm.append('<div class="window-btns"><button type="submit" class="btn --orange window-close-btn">OK</button></div>');
-                        }
-                    } else {
-                        curForm.prepend('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+            var smartCaptchaWaiting = false;
+            curForm.find('.captcha-container').each(function() {
+                if (curForm.attr('form-smartcaptchawaiting') != 'true') {
+                    var curBlock = $(this);
+                    var curInput = curBlock.find('input[name="smart-token"]');
+                    curInput.removeAttr('value');
+                    smartCaptchaWaiting = true;
+                    $('form[form-smartcaptchawaiting]').removeAttr('form-smartcaptchawaiting');
+                    curForm.attr('form-smartcaptchawaiting', 'false');
+
+                    if (!window.smartCaptcha) {
+                        return;
                     }
-                    curForm.removeClass('loading');
-                });
-            } else if (curForm.hasClass('window-form')) {
-                var formData = new FormData(form);
-                windowOpen(curForm.attr('action'), formData);
-            } else {
-                form.submit();
+                    var curID = $(this).attr('data-smartid');
+                    window.smartCaptcha.execute(curID);
+                } else {
+                    curForm.removeAttr('form-smartcaptchawaiting');
+                }
+            });
+
+            if (!smartCaptchaWaiting) {
+
+                if (curForm.hasClass('ajax-form')) {
+                    curForm.addClass('loading');
+                    var formData = new FormData(form);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: curForm.attr('action'),
+                        processData: false,
+                        contentType: false,
+                        dataType: 'json',
+                        data: formData,
+                        cache: false
+                    }).done(function(data) {
+                        curForm.find('.message').remove();
+                        if (data.status) {
+                            curForm.html('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                            if (curForm.parents().filter('.window').length == 1) {
+                                curForm.append('<div class="window-btns"><button type="submit" class="btn --orange window-close-btn">OK</button></div>');
+                            }
+                        } else {
+                            curForm.prepend('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>')
+                        }
+                        curForm.removeClass('loading');
+                    });
+                } else if (curForm.hasClass('window-form')) {
+                    var formData = new FormData(form);
+                    windowOpen(curForm.attr('action'), formData);
+                } else {
+                    form.submit();
+                }
             }
         }
     });
@@ -655,7 +679,10 @@ function initForm(curForm) {
 
 function smartCaptchaLoad() {}
 
-function smartCaptchaCallback(token) {}
+function smartCaptchaCallback(token) {
+    $('form[form-smartcaptchawaiting]').attr('form-smartcaptchawaiting', 'true');
+    $('form[form-smartcaptchawaiting] [type="submit"]').trigger('click');
+}
 
 $(document).ready(function() {
 
