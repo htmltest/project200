@@ -602,17 +602,19 @@ function initForm(curForm) {
     });
 
     curForm.find('.captcha-container').each(function() {
-        if (!window.smartCaptcha) {
-            return;
+        if ($('script#smartCaptchaScript').length == 0) {
+            $('body').append('<script src="https://captcha-api.yandex.ru/captcha.js?render=onload&onload=smartCaptchaLoad" defer id="smartCaptchaScript"></script>');
+        } else {
+            if (window.smartCaptcha) {
+                var curID = window.smartCaptcha.render(this, {
+                    sitekey: smartCaptchaKey,
+                    callback: smartCaptchaCallback,
+                    invisible: true,
+                    hideShield: true,
+                });
+                $(this).attr('data-smartid', curID);
+            }
         }
-        var curID = window.smartCaptcha.render(this, {
-            sitekey: 'uahGSHTKJqjaJ0ezlhjrbOYH4OxS6zzL9CZ47OgY',
-            callback: smartCaptchaCallback,
-            invisible: true,
-            hideShield: true,
-            hl: 'en'
-        });
-        $(this).attr('data-smartid', curID);
     });
 
     curForm.validate({
@@ -631,6 +633,7 @@ function initForm(curForm) {
                     curForm.attr('form-smartcaptchawaiting', 'false');
 
                     if (!window.smartCaptcha) {
+                        alert('Сервис временно недоступен');
                         return;
                     }
                     var curID = $(this).attr('data-smartid');
@@ -677,7 +680,22 @@ function initForm(curForm) {
     });
 }
 
-function smartCaptchaLoad() {}
+var smartCaptchaKey = 'uahGSHTKJqjaJ0ezlhjrbOYH4OxS6zzL9CZ47OgY';
+
+function smartCaptchaLoad() {
+    $('.captcha-container').each(function() {
+        if (!window.smartCaptcha) {
+            return;
+        }
+        var curID = window.smartCaptcha.render(this, {
+            sitekey: smartCaptchaKey,
+            callback: smartCaptchaCallback,
+            invisible: true,
+            hideShield: true,
+        });
+        $(this).attr('data-smartid', curID);
+    });
+}
 
 function smartCaptchaCallback(token) {
     $('form[form-smartcaptchawaiting]').attr('form-smartcaptchawaiting', 'true');
