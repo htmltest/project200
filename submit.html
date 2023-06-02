@@ -90,7 +90,17 @@
                     <a href="#" class="header-new-nav-add"><svg><use xlink:href="images/ico/sprite.svg#header-new-nav-add-open"></use></svg><svg><use xlink:href="images/ico/sprite.svg#header-new-nav-add-close"></use></svg></a>
                     <a href="#" class="header-new-nav-lang">RU</a>
                     <a href="#" class="header-new-nav-search"><svg><use xlink:href="images/ico/sprite.svg#header-new-search"></use></svg></a>
-                    <a href="#" class="header-new-nav-user"><svg><use xlink:href="images/ico/sprite.svg#header-new-user"></use></svg></a>
+                    <div class="header-new-nav-user">
+                        <a href="#" class="header-new-nav-user-link"><svg><use xlink:href="images/ico/sprite.svg#header-new-user"></use></svg></a>
+                        <div class="header-new-nav-user-content">
+                            <div class="header-new-nav-user-title">Account<a href="#"><svg><use xlink:href="images/ico/sprite.svg#header-new-nav-add-close"></use></svg></a></div>
+                            <div class="header-new-nav-user-list">
+                                <a href="http://foreign.cis.istu.edu/" target="_blank">My Application to INRTU<svg><use xlink:href="images/ico/sprite.svg#open-in-new"></use></svg></a>
+                                <a href="https://int.istu.edu/" target="_blank">My INRTU Account<svg><use xlink:href="images/ico/sprite.svg#open-in-new"></use></svg></a>
+                                <a href="https://el.istu.edu/" target="_blank">My electronic learning<svg><use xlink:href="images/ico/sprite.svg#open-in-new"></use></svg></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -292,7 +302,7 @@
             <a href="#" class="bread-crumbs__link">Admissions</a>
           </div>
           <h1 class="h2">Submit a tesimonial</h1>
-          <form class="apply --submit">
+          <form action="ajax/success.php" method="post" class="apply --submit ajax-form">
             <div class="apply__grid">
               <div class="field__wrap">
                 <div class="field__title">First Name<span>*</span></div>
@@ -346,7 +356,11 @@
               <label for="c3" class="checkbox">I agree to the use of my personal data as established by the
                 <a href="#" class="link">privacy policy</a>.</label>
             </div>
-            <button type="button" class="btn --orange">Send the form</button>
+
+            <div class="captcha-container"></div>
+            <div class="captcha-notice">Этот сайт использует <a href="https://yandex.ru/legal/smartcaptcha_notice/" target="_blank">Yandex SmartCaptcha</a>.</div>
+
+            <button type="submit" class="btn --orange">Send the form</button>
           </form>
         </div>
       </div>

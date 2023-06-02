@@ -10308,19 +10308,59 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
     .header-fixed .header-new-nav-search {margin:17px 15px 0 0}
 }
 
-.header-new-nav-user {float:right; display:block; margin:24px 20px 0 0; width:32px; height:32px; background:rgba(44, 99, 132, 0.1); border-radius:50%; transition:background 0.2s; position:relative}
+.header-new-nav-user {float:right; display:block; margin:24px 20px 0 0; width:32px; height:32px; position:relative}
 .header-fixed .header-new-nav-user {margin:14px 20px 0 0}
+.header-new-nav-user-link {display:block; width:32px; height:32px; background:rgba(44, 99, 132, 0.1); border-radius:50%; transition:background 0.2s; position:relative}
 @media screen and (min-width:1220px) {
-    .header-new-nav-user:hover {background:#2C6384}
+    .header-new-nav-user-link:hover {background:#2C6384}
 }
-.header-new-nav-user svg {display:block; width:24px; height:24px; position:absolute; left:50%; top:50%; margin:-12px 0 0 -12px; fill:#2C6384; transition:fill 0.2s}
 @media screen and (min-width:1220px) {
-    .header-new-nav-user:hover svg {fill:#FFFFFF}
+    .header-new-nav-user:hover .header-new-nav-user-link {background:#2C6384}
 }
+.header-new-nav-user-link svg {display:block; width:24px; height:24px; position:absolute; left:50%; top:50%; margin:-12px 0 0 -12px; fill:#2C6384; transition:fill 0.2s}
+@media screen and (min-width:1220px) {
+    .header-new-nav-user:hover .header-new-nav-user-link svg {fill:#FFFFFF}
+}
+.header-new-nav-user-content {display:none; position:absolute; left:-25px; top:100%; margin-top:12px; padding:15px; z-index:89; white-space:nowrap; background:#FFFFFF; box-shadow:0px 0px 20px rgba(0, 0, 0, 0.15)}
+@media screen and (min-width:1220px) {
+    .header-new-nav-user:hover .header-new-nav-user-content {display:block}
+}
+.header-new-nav-user-content::before {content:""; position:absolute; left:34px; top:-8px; border-bottom:8px solid #FFFFFF; border-left:7px solid transparent; border-right:7px solid transparent}
+@media screen and (min-width:1220px) {
+    .header-new-nav-user-content::after {content:""; position:absolute; left:0; top:-12px; right:0; height:12px; background:rgba(0, 0, 0, 0)}
+}
+.header-new-nav-user-title {font:16px/24px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:#000000}
+.header-new-nav-user-title a {display:none}
+.header-new-nav-user-list {margin:15px 0 0 0; border-top:1px solid #BFBFBF}
+.header-new-nav-user-list a {display:block; margin:10px 0 0 0; padding:0 62px 0 0; text-decoration:none; color:#000000; font-size:16px; line-height:24px; position:relative}
+@media screen and (min-width:1220px) {
+    .header-new-nav-user-list a:hover {color:#2C6384}
+}
+.header-new-nav-user-list a svg {position:absolute; right:0; top:3px; width:18px; height:18px; fill:#BFBFBF}
 
 @media screen and (max-width:1219px) {
     .header-new-nav-user {margin:17px 15px 0 0}
     .header-fixed .header-new-nav-user {margin:17px 15px 0 0}
+
+    .header-new-nav-user-open .header-new-nav-user-link {background:#2C6384}
+    .header-new-nav-user-open .header-new-nav-user-link svg {fill:#FFFFFF}
+
+    .header-new-nav-user-open,
+    .header-new-nav-user-open body {overflow:hidden; position:fixed; left:0; top:0; right:0; bottom:0}
+    .header-new-nav-user-open .header-new {position:fixed; left:0; top:0; right:0; bottom:0; overflow:hidden; background:#FAFAFA}
+    .header-new-nav-user-open .header-new-container {background:#FFFFFF}
+    .header-new-nav-user-open .header-new-add {display:block}
+    .header-new-nav-user-open .header-new-add-menu {display:none}
+    .header-new-nav-user-open .header-new-add-links {display:none}
+    .header-new-nav-user-content {position:relative; left:auto; top:auto; margin-top:0; padding:0; white-space:normal; box-shadow:none; border-bottom:1px solid #DBDBDB}
+    .header-new-nav-user-content::before {display:none}
+    .header-new-nav-user-open .header-new-add .header-new-nav-user-content {display:block}
+    .header-new-nav-user-title {position:relative; background:#F7F7F7; padding:17px 10px; position:relative}
+    .header-new-nav-user-title a {display:block; position:absolute; right:10px; top:14px; width:30px; height:30px}
+    .header-new-nav-user-title a svg {display:block; width:30px; height:30px; fill:#1C1B1F}
+    .header-new-nav-user-list {margin:0; border-top:none}
+    .header-new-nav-user-list a {padding:14px 62px 14px 10px; border-top:1px solid #DBDBDB; margin:0}
+    .header-new-nav-user-list a svg {top:17px; right:10px}
 }
 
 .header-new-search {display:none; position:absolute; left:0; top:100%; right:0; background:#FFFFFF; height:96px; z-index:19; box-shadow:0px 4px 15px rgba(0, 0, 0, 0.1)}
