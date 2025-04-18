@@ -10810,3 +10810,152 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
     .distance-team-item-title a {color:#2CA1C7; text-decoration:underline}
     .distance-team-item-links {font-size:14px; line-height:21px}
 }
+
+.studyworkbaikal-header {margin:-35px -100px 20px -100px; padding:100px; display:flex; align-items:flex-end; height:400px; position:relative; background:url(../images/pic/studyworkbaikal/header.jpg) no-repeat center; background-size:cover}
+.studyworkbaikal-header::before {content:""; position:absolute; left:0; top:0; right:0; bottom:0; background:linear-gradient(180deg, rgba(0, 0, 0, 0) 48.24%, rgba(0, 0, 0, 0.6) 114.5%)}
+.studyworkbaikal-header h1 {margin:0; padding:0; color:#FFFFFF; position:relative; font:44px/52px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif}
+
+@media screen and (max-width:1219px) {
+    .studyworkbaikal-header {height:410px; margin:-35px 0 20px 0; padding:45px 15px; background-image:url(../images/pic/studyworkbaikal/header-mobile.jpg); background-position:center top}
+    .studyworkbaikal-header h1 {font-size:25px; line-height:1.3em}
+}
+
+@media screen and (max-width:767px) {
+    .studyworkbaikal-header {margin:-6px 0 0 0}
+}
+
+.studyworkbaikal-about {margin:100px 0 0 0; display:flex}
+.studyworkbaikal-about-info {min-width:482px; max-width:482px; margin:0 60px 0 0}
+.studyworkbaikal-about-title {font:44px/52px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:#000000}
+.studyworkbaikal-about-text {margin:24px 0 0 0; font-size:20px; line-height:30px; color:rgba(0, 0, 0, 0.85)}
+.studyworkbaikal-about-logos {display:flex; width:100%; justify-content:space-between}
+.studyworkbaikal-about-logo {min-width:calc(50% - 5px); max-width:calc(50% - 5px); position:relative; overflow:hidden}
+.studyworkbaikal-about-logo img {display:block; width:100%; border:1px solid #DBDBDB; transition:border-color 0.2s}
+.studyworkbaikal-about-logo a:hover img {border-color:#000000}
+.studyworkbaikal-about-logo img+img {display:none}
+
+@media screen and (max-width:1219px) {
+    .studyworkbaikal-about {margin:60px 0 0 0; display:block}
+    .studyworkbaikal-about-info {min-width:0; max-width:none; margin:0}
+    .studyworkbaikal-about-title {font-size:22px; line-height:30px}
+    .studyworkbaikal-about-text {margin:20px 0 0 0; font-size:16px; line-height:24px}
+    .studyworkbaikal-about-logos {display:block; margin:20px 0 0 0}
+    .studyworkbaikal-about-logo {min-width:0; max-width:none; margin:20px 0 0 0; border:1px solid #DBDBDB; height:180px; display:flex; align-items:center; justify-content:center}
+    .studyworkbaikal-about-logo img {display:none; width:auto; border:none; max-width:100%; max-height:180px}
+    .studyworkbaikal-about-logo img+img {display:block}
+}
+
+.studyworkbaikal-info {margin:100px -100px 0 -100px; padding:60px 100px; background:#2CA1C7; color:rgba(255, 255, 255, 0.6); font:44px/52px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif}
+.studyworkbaikal-info span {color:#FFFFFF}
+
+@media screen and (max-width:1219px) {
+    .studyworkbaikal-info {margin:18px -10px 0 -10px; padding:30px 10px; font-size:22px; line-height:1.4em}
+}
+
+.studyworkbaikal-what {margin:100px 0 0 0}
+.studyworkbaikal-what-title {font:32px/52px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:rgba(0, 0, 0, 0.9)}
+.studyworkbaikal-what-text {margin:40px 0 0 0; font:24px/32px "Golos_Medium", "Golos-Medium", "Arial", sans-serif; color:rgba(0, 0, 0, 0.9)}
+.studyworkbaikal-what-list {margin:20px 0 0 0; border-top:1px solid #DBDBDB; padding:0 0 40px 0}
+.studyworkbaikal-what-list-inner {margin:0 -20px; display:flex; flex-wrap:wrap}
+.studyworkbaikal-what-item {min-width:calc(33.33% - 40px); max-width:calc(33.33% - 40px); margin:40px 20px 0 20px}
+.studyworkbaikal-what-item-icon {display:flex; align-items:center; justify-content:center; width:88px; height:88px; background:#FF6515; border-radius:50%}
+.studyworkbaikal-what-item-icon img {width:40px}
+.studyworkbaikal-what-item-title {margin:24px 0 0 0; font:20px/26px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:rgba(0, 0, 0, 0.85)}
+.studyworkbaikal-what-item-text {margin:12px 0 0 0; font-size:16px; line-height:24px; color:rgba(0, 0, 0, 0.85)}
+.studyworkbaikal-skills-title {margin:40px 0 0 0; font:24px/32px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:rgba(0, 0, 0, 0.9)}
+.studyworkbaikal-skills-text {margin:10px 0 0 0; font-size:16px; line-height:24px; color:rgba(0, 0, 0, 0.85)}
+.studyworkbaikal-skills-list {margin:20px 0 0 0; border-top:1px solid #DBDBDB; padding:20px 0 0 0}
+.studyworkbaikal-skills-list-inner {margin:0 -10px; display:flex; flex-wrap:wrap}
+.studyworkbaikal-skills-item {min-width:calc(25% - 20px); max-width:calc(25% - 20px); margin:20px 10px 0 10px; background:#F7F7F7; padding:24px}
+.studyworkbaikal-skills-item-icon {width:100px; margin:0 auto}
+.studyworkbaikal-skills-item-icon img {display:block; width:100%}
+.studyworkbaikal-skills-item-title {margin:48px 0 0 0; text-align:center; font:16px/1.4em "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:rgba(0, 0, 0, 0.85)}
+
+@media screen and (max-width:1219px) {
+    .studyworkbaikal-what {margin:60px 0 0 0}
+    .studyworkbaikal-what-title {font-size:22px; line-height:30px}
+    .studyworkbaikal-what-text {margin:20px 0 0 0; font-size:20px; line-height:30px}
+    .studyworkbaikal-what-list {padding:0 0 20px 0}
+    .studyworkbaikal-what-list-inner {margin:0; display:block}
+    .studyworkbaikal-what-item {min-width:0; max-width:none; margin:20px 0 0 0}
+    .studyworkbaikal-what-item-title {margin:12px 0 0 0; font-size:16px; line-height:26px}
+    .studyworkbaikal-what-item-text {margin:6px 0 0 0}
+    .studyworkbaikal-skills-title {font-size:20px; line-height:30px}
+    .studyworkbaikal-skills-list {padding:10px 0 0 0}
+    .studyworkbaikal-skills-list-inner {margin:0; display:block}
+    .studyworkbaikal-skills-item {min-width:0; max-width:none; margin:10px 0 0 0; display:flex; align-items:center; justify-content:space-between; flex-direction:row-reverse; padding:10px}
+    .studyworkbaikal-skills-item-title {margin:0; text-align:left}
+    .studyworkbaikal-skills-item-icon {min-width:100px; max-width:100%; margin:0}
+}
+
+.studyworkbaikal-summer {margin:100px 0 0 0}
+.studyworkbaikal-summer-title {font:32px/52px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:rgba(0, 0, 0, 0.9)}
+.studyworkbaikal-summer-list {margin:0 -20px; display:flex; flex-wrap:wrap}
+.studyworkbaikal-summer-item {min-width:calc(50% - 40px); max-width:calc(50% - 40px); margin:40px 20px 0 20px}
+.studyworkbaikal-summer-item-photo img {display:block; width:100%}
+.studyworkbaikal-summer-item-text {margin:20px 0 0 0; font-size:20px; line-height:30px; color:rgba(0, 0, 0, 0.85)}
+
+@media screen and (max-width:1219px) {
+    .studyworkbaikal-summer {margin:60px 0 0 0}
+    .studyworkbaikal-summer-title {font-size:22px; line-height:30px}
+    .studyworkbaikal-summer-list {margin:0; display:block}
+    .studyworkbaikal-summer-item {min-width:0; max-width:none; margin:20px 0 0 0}
+    .studyworkbaikal-summer-item-photo {display:flex; position:relative; overflow:hidden; justify-content:center; height:400px}
+    .studyworkbaikal-summer-item-photo img {width:auto; max-width:none; height:400px}
+    .studyworkbaikal-summer-item-text {margin:10px 0 0 0; font-size:16px; line-height:24px}
+}
+
+.studyworkbaikal-why {margin:100px -100px 0 -100px; padding:100px; display:flex; flex-direction:column; justify-content:flex-end; height:600px; position:relative; background:url(../images/pic/studyworkbaikal/why.jpg) no-repeat center; background-size:cover}
+.studyworkbaikal-why::before {content:""; position:absolute; left:0; top:0; right:0; bottom:0; background:linear-gradient(180deg, rgba(0, 0, 0, 0) 38.08%, rgba(0, 0, 0, 0.0577075) 41.18%, rgba(0, 0, 0, 0.7) 81.43%)}
+.studyworkbaikal-why-title {color:#FFFFFF; position:relative; font:44px/52px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; max-width:900px}
+.studyworkbaikal-why-text {margin:20px 0 0 0; color:rgba(255, 255, 255, 0.85); position:relative; font-size:16px; line-height:24px; max-width:900px}
+
+@media screen and (max-width:1219px) {
+    .studyworkbaikal-why {margin:60px -10px 0 -10px; padding:30px 10px}
+    .studyworkbaikal-why-title {font-size:22px; line-height:1.5em}
+    .studyworkbaikal-why-text {margin:10px 0 0 0}
+}
+
+.studyworkbaikal-requirements {margin:100px 0 0 0}
+.studyworkbaikal-requirements-title {font:32px/52px "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:rgba(0, 0, 0, 0.9)}
+.studyworkbaikal-requirements-list {margin:40px 0 0 0; border-bottom:1px solid #DBDBDB}
+.studyworkbaikal-requirements-item {border-top:1px solid #DBDBDB; padding:20px 0}
+.studyworkbaikal-requirements-item-title {display:flex; font:20px/30px "Golos_Medium", "Golos-Medium", "Arial", sans-serif}
+.studyworkbaikal-requirements-item-title-number {min-width:60px; max-width:60px; color:#FF6515}
+.studyworkbaikal-requirements-item-title-text {color:rgba(0, 0, 0, 0.8)}
+.studyworkbaikal-requirements-programms {margin:20px 0 0 60px}
+.studyworkbaikal-requirements-programm {margin:16px 0 0 0; display:flex}
+.studyworkbaikal-requirements-programm-title {min-width:200px; max-width:200px; margin:0 10px 0 0; font-size:16px; line-height:24px; color:rgba(0, 0, 0, 0.85)}
+.studyworkbaikal-requirements-programm-value {padding:0 0 0 34px; position:relative; font-size:16px; line-height:24px; color:rgba(0, 0, 0, 0.85)}
+.studyworkbaikal-requirements-programm-value::before {content:""; position:absolute; left:0; top:0; width:24px; height:24px; background:url(../images/pic/studyworkbaikal/icon-time.svg) no-repeat; background-size:100%}
+
+@media screen and (max-width:1219px) {
+    .studyworkbaikal-requirements {margin:60px 0 0 0}
+    .studyworkbaikal-requirements-title {font-size:22px; line-height:30px}
+    .studyworkbaikal-requirements-list {margin:20px 0 0 0}
+    .studyworkbaikal-requirements-item-title-number {min-width:40px; max-width:40px}
+    .studyworkbaikal-requirements-programms {margin:20px 0 0 40px}
+    .studyworkbaikal-requirements-programm {display:block}
+    .studyworkbaikal-requirements-programm-title {min-width:0; max-width:none; margin:0}
+    .studyworkbaikal-requirements-programm-value {margin:5px 0 0 0}
+}
+
+.studyworkbaikal-start {margin:100px 0 0 0; display:flex; justify-content:space-between; align-items:center}
+.studyworkbaikal-start-content {min-width:560px; max-width:560px}
+.studyworkbaikal-start-subtitle {font-size:14px; line-height:20px; letter-spacing:0.05em; text-transform:uppercase; color:rgba(0, 0, 0, 0.85)}
+.studyworkbaikal-start-title {margin:40px 0 0 0; font:32px/1.5em "Golos_DemiBold", "Golos-DemiBold", "Arial", sans-serif; color:#000000}
+.studyworkbaikal-start-text {margin:12px 0 0 0; font-size:16px; line-height:24px; color:#FF6515}
+.studyworkbaikal-start-btn {margin:40px 0 0 0}
+.studyworkbaikal-start-btn .btn {font-size:16px}
+.studyworkbaikal-start-photo {min-width:560px; max-width:560px}
+.studyworkbaikal-start-photo img {display:block; width:100%}
+
+@media screen and (max-width:1219px) {
+    .studyworkbaikal-start {margin:60px 0 0 0; display:block; position:relative; padding:0 0 76px 0}
+    .studyworkbaikal-start-content {min-width:0; max-width:none}
+    .studyworkbaikal-start-title {margin:20px 0 0 0; font-size:22px; line-height:30px}
+    .studyworkbaikal-start-photo {min-width:0; max-width:none; margin:20px 0 0 0; height:400px; position:relative; overflow:hidden; display:flex; justify-content:center}
+    .studyworkbaikal-start-photo img {width:auto; max-width:none; height:400px}
+    .studyworkbaikal-start-btn {margin:0; position:absolute; left:0; bottom:0; right:0}
+    .studyworkbaikal-start-btn .btn {display:block; width:100%; height:56px; line-height:56px}
+}
