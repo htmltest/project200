@@ -10232,30 +10232,30 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
 
 .header-new-nav {float:left; margin:28px 0 0 40px}
 .header-fixed .header-new-nav {margin:18px 0 0 40px}
-.header-new-nav > ul {float:left; margin:0; padding:0; list-style:none}
-.header-new-nav > ul > li {float:left; margin:0 0 0 20px; padding:0; font-size:16px; line-height:24px; position:relative}
-.header-new-nav > ul > li:first-child {margin:0}
-.header-new-nav > ul > li::before {display:none}
-.header-new-nav > ul > li > a {color:#000000; text-decoration:none; transition:color 0.2s}
+.header-new-nav ul {float:left; margin:0; padding:0; list-style:none}
+.header-new-nav ul li {float:left; margin:0 0 0 20px; padding:0; font-size:16px; line-height:24px; position:relative}
+.header-new-nav ul li:first-child {margin:0}
+.header-new-nav ul li::before {display:none}
+.header-new-nav ul li a {color:#000000; text-decoration:none; transition:color 0.2s}
 @media screen and (min-width:1220px) {
-    .header-new-nav > ul > li:hover > a {color:#2C6384}
+    .header-new-nav ul li:hover a {color:#2C6384}
 }
-.header-new-nav > ul > li.active > a {color:#2C6384}
-.header-new-nav > ul > li > a > svg {display:inline-block; vertical-align:middle; margin:-2px 0 0 5px; width:10px; height:9px; fill:none; stroke:#BFBFBF}
-.header-new-nav > ul > li > ul {display:none; position:absolute; left:0; top:100%; margin:8px 0 0 0; padding:10px 0; list-style:none; background:#FFFFFF; box-shadow:0px 0px 20px rgba(0, 0, 0, 0.15); white-space:nowrap}
-.header-new-nav > ul > li > ul::before {content:""; display:block; position:absolute; left:0; top:-8px; right:0; height:8px; background:url(../images/ico/blank.gif)}
-.header-new-nav > ul > li > ul::after {content:""; display:block; width:25px; height:27px; position:absolute; left:29px; top:-8px; background:url(../images/ico/header-new-nav-sub.svg); pointer-events:none}
+.header-new-nav ul li.active a {color:#2C6384}
+.header-new-nav ul li a svg {display:inline-block; vertical-align:middle; margin:-2px 0 0 5px; width:10px; height:9px; fill:none; stroke:#BFBFBF}
+.header-new-nav ul li ul {display:none; position:absolute; left:0; top:100%; margin:8px 0 0 0; padding:10px 0; list-style:none; background:#FFFFFF; box-shadow:0px 0px 20px rgba(0, 0, 0, 0.15); white-space:nowrap}
+.header-new-nav ul li ul::before {content:""; display:block; position:absolute; left:0; top:-8px; right:0; height:8px; background:url(../images/ico/blank.gif)}
+.header-new-nav ul li ul::after {content:""; display:block; width:25px; height:27px; position:absolute; left:29px; top:-8px; background:url(../images/ico/header-new-nav-sub.svg); pointer-events:none}
 @media screen and (min-width:1220px) {
-    .header-new-nav > ul > li:hover > ul {display:block}
+    .header-new-nav ul li:hover ul {display:block}
 }
-.header-new-nav > ul > li > ul > li {margin:4px 0 0 0; padding:0; font-size:16px; line-height:24px}
-.header-new-nav > ul > li > ul > li:first-child {margin:0}
-.header-new-nav > ul > li > ul > li::before {display:none}
-.header-new-nav > ul > li > ul > li > a {display:block; padding:4px 43px 4px 29px; line-height:24px; color:#000000; text-decoration:none; transition:color 0.2s}
+.header-new-nav ul li ul li {float:none; margin:4px 0 0 0; padding:0; font-size:16px; line-height:24px}
+.header-new-nav ul li ul li:first-child {margin:0}
+.header-new-nav ul li ul li::before {display:none}
+.header-new-nav ul li ul li a {display:block; padding:4px 43px 4px 29px; line-height:24px; color:#000000; text-decoration:none; transition:color 0.2s}
 @media screen and (min-width:1220px) {
-    .header-new-nav > ul > li > ul > li > a:hover {color:#2C6384}
+    .header-new-nav ul li ul li a:hover {color:#2C6384}
 }
-.header-new-nav > ul > li > ul > li.active > a {color:#2C6384}
+.header-new-nav ul li ul li.active a {color:#2C6384}
 
 @media screen and (max-width:1219px) {
     .header-new-nav {display:none}
@@ -10392,53 +10392,55 @@ label.error {display:block; font-size:12px; line-height:14px; color:#f00; text-a
 .header-new-add {display:none}
 .header-new-nav-add-open .header-new-add {display:block}
 .header-new-add-menu {margin:42px 0 0 0}
-.header-new-add-menu > ul {margin:0; padding:0; list-style:none; column-count:4; column-gap:40px}
 .header-new-add-menu > ul > li {margin:0; padding:0 0 60px 0; -webkit-column-break-inside:avoid; page-break-inside:avoid; break-inside:avoid; break-inside:avoid-column; font-family:"Golos_Medium", "Golos-Medium", "Arial", sans-serif; font-size:16px; line-height:24px; text-transform:uppercase; color:rgba(0, 0, 0, 0.85)}
 .header-new-add-menu > ul > li::before {display:none}
 .header-new-add-menu > ul > li > a {line-height:24px; color:rgba(0, 0, 0, 0.85); text-decoration:none; transition:color 0.2s}
 @media screen and (min-width:1220px) {
-    .header-new-add-menu > ul > li > a:hover {color:#2C6384}
+    .header-new-add-menu ul li a:hover {color:#2C6384}
 }
-.header-new-add-menu > ul > li > a > svg {display:none}
-.header-new-add-menu > ul > li > ul {margin:10px 0 0 0; padding:0; list-style:none}
-.header-new-add-menu > ul > li > ul > li {margin:20px 0 0 0; padding:0; font-family:"Golos_Regular", "Golos-Regular", "Arial", sans-serif; font-size:16px; line-height:24px; text-transform:none}
-.header-new-add-menu > ul > li > ul > li:first-child {margin:0}
-.header-new-add-menu > ul > li > ul > li::before {display:none}
-.header-new-add-menu > ul > li > ul > li > a {line-height:24px; text-decoration:none; color:#2CA1C7; transition:color 0.2s}
+.header-new-add-menu ul li a svg {display:none}
+.header-new-add-menu ul li ul {margin:10px 0 0 0; padding:0; list-style:none; column-count:1; column-gap:0}
+.header-new-add-menu ul li ul li {margin:20px 0 0 0; padding:0; font-weight:normal; font-size:16px; line-height:24px; text-transform:none}
+.header-new-add-menu ul li ul li:first-child {margin:0}
+.header-new-add-menu ul li ul li::before {display:none}
+.header-new-add-menu ul li ul li a {line-height:24px; text-decoration:none; color:#2CA1C7; transition:color 0.2s}
 @media screen and (min-width:1220px) {
-    .header-new-add-menu > ul > li > ul > li > a:hover {color:#FF6515}
+    .header-new-add-menu ul li ul li a:hover {color:#FF6515}
 }
-.header-new-add-menu > ul > li > ul > li.active {padding:0 0 0 14px; background:url(../images/ico/header-new-add-menu.svg) no-repeat left 8px}
-.header-new-add-menu > ul > li > ul > li.active > a {color:#FF6515}
-.header-new-add-menu > ul > li > ul > li > ul {margin:10px 0 0 0; padding:0; list-style:none}
-.header-new-add-menu > ul > li > ul > li > ul > li {margin:10px 0 0 0; padding:0 0 0 24px; font-family:"Golos_Regular", "Golos-Regular", "Arial", sans-serif; font-size:16px; line-height:21px; text-transform:none}
-.header-new-add-menu > ul > li > ul > li > ul > li:first-child {margin:0}
-.header-new-add-menu > ul > li > ul > li > ul > li::before {content:""; display:block; width:4px; height:4px; position:absolute; left:10px; top:9px; background:#FF6515; border-radius:50%}
-.header-new-add-menu > ul > li > ul > li > ul > li > a {line-height:21px; text-decoration:none; color:#2CA1C7; transition:color 0.2s}
+.header-new-add-menu ul li ul li.active {padding:0 0 0 14px; background:url(../images/ico/header-new-add-menu.svg) no-repeat left 8px}
+.header-new-add-menu ul li ul li.active a {color:#FF6515}
+.header-new-add-menu ul li ul li ul {margin:10px 0 0 0; padding:0; list-style:none}
+.header-new-add-menu ul li ul li ul li {margin:10px 0 0 0; padding:0 0 0 24px; font-weight:normal; font-size:16px; line-height:21px; text-transform:none}
+.header-new-add-menu ul li ul li ul li:first-child {margin:0}
+.header-new-add-menu ul li ul li ul li::before {content:""; display:block; width:4px; height:4px; position:absolute; left:10px; top:9px; background:#FF6515; border-radius:50%}
+.header-new-add-menu ul li ul li ul li a {line-height:21px; text-decoration:none; color:#2CA1C7; transition:color 0.2s}
 @media screen and (min-width:1220px) {
-    .header-new-add-menu > ul > li > ul > li > ul > li > a:hover {color:#FF6515}
+    .header-new-add-menu ul li ul li ul li a:hover {color:#FF6515}
 }
-.header-new-add-menu > ul > li > ul > li > ul > li.active > a {color:#FF6515}
+.header-new-add-menu ul li ul li ul li.active a {color:#FF6515}
 
 @media screen and (max-width:1219px) {
     .header-new-add {position:absolute; left:0; top:65px; right:0; bottom:0; overflow:auto}
     .header-new-add .wrap {padding:0}
     .header-new-add-menu {margin:0}
-    .header-new-add-menu > ul {column-count:1; column-gap:0}
-    .header-new-add-menu > ul > li {border-top:1px solid #DBDBDB; padding:0; text-transform:none; color:#000000; font-family:"Golos_Regular", "Golos-Regular", "Arial", sans-serif}
-    .header-new-add-menu > ul > li:first-child {border-top:none}
-    .header-new-add-menu > ul > li > a {color:#000000; display:block; padding:14px 33px 14px 10px; position:relative}
-    .header-new-add-menu > ul > li > a > svg {display:block; width:13px; height:13px; position:absolute; right:10px; top:21px; fill:none; stroke:#BFBFBF}
-    .header-new-add-menu > ul > li > ul {display:none}
+    .header-new-add-menu ul {column-count:1; column-gap:0}
+    .header-new-add-menu ul li {border-top:1px solid #DBDBDB; padding:0; text-transform:none; color:#000000; font-weight:normal}
+    .header-new-add-menu ul li:first-child {border-top:none}
+    .header-new-add-menu ul li a {color:#000000; display:block; padding:14px 33px 14px 10px; position:relative}
+    .header-new-add-menu ul li a svg {display:block; width:13px; height:13px; position:absolute; right:10px; top:21px; fill:none; stroke:#BFBFBF}
+    .header-new-add-menu ul li ul {display:none}
 
-    .header-new-nav-add-sub-open .header-new-add-menu > ul > li {display:none}
-    .header-new-nav-add-sub-open .header-new-add-menu > ul > li.open {display:block; border-top:none}
-    .header-new-nav-add-sub-open .header-new-add-menu > ul > li.open > a {background:#F7F7F7; font-family:"Golos_Medium", "Golos-Medium", "Arial", sans-serif; padding-left:29px}
-    .header-new-nav-add-sub-open .header-new-add-menu > ul > li.open > a > svg {right:auto; left:10px; stroke:#000000; transform:rotate(-180deg)}
-    .header-new-nav-add-sub-open .header-new-add-menu > ul > li.open > ul {display:block; border-top:1px solid #DBDBDB; margin:0}
-    .header-new-nav-add-sub-open .header-new-add-menu > ul > li.open > ul > li {border-bottom:1px solid #DBDBDB; margin:0}
-    .header-new-nav-add-sub-open .header-new-add-menu > ul > li.open > ul > li > a {display:block; color:#000000; padding:14px 29px}
-    .header-new-nav-add-sub-open .header-new-add-menu > ul > li.open > ul > li > ul {display:none}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li {display:none}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open {display:block; border-top:none}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open a {background:#F7F7F7; font-weight:500; padding-left:29px}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open a svg {right:auto; left:10px; stroke:#000000; transform:rotate(-180deg)}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open ul {display:block; border-top:1px solid #DBDBDB; margin:0}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open ul li {display:block; border-bottom:1px solid #DBDBDB; margin:0}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open ul li a {display:block; color:#000000; padding:14px 29px}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open ul li a svg {display:none}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open ul li ul {display:none}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open ul li.active {padding:0; background:none}
+    .header-new-nav-add-sub-open .header-new-add-menu ul li.open ul li.active a {color:#FF6515}
 }
 
 .header-new-add-links {display:none}
